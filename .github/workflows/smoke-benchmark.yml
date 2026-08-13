@@ -1,0 +1,24 @@
+name: Synthetic Smoke Benchmark
+on:
+  workflow_dispatch:
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - run: pip install -r requirements.txt && pip install -e .
+      - run: python scripts/generate_synthetic.py --hours 240 --sensors 24
+      - run: python scripts/build_graph.py --mode knn
+      - run: python scripts/train.py --config configs/smoke.yaml
+      - run: python scripts/evaluate.py --config configs/smoke.yaml
+      - run: python scripts/hash_artifacts.py artifacts --output SHA256SUMS
+      - uses: actions/upload-artifact@v4
+        with:
+          name: graphtraffic-synthetic-smoke
+          path: |
+            artifacts/smoke
+            SHA256SUMS
