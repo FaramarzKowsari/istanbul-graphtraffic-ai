@@ -1,1409 +1,177 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>İstanbul GraphTraffic AI — Faramarz Kowsari</title>
+<meta name="description" content="Uncertainty-aware spatiotemporal graph learning for multi-horizon traffic forecasting in Istanbul.">
+<meta name="keywords" content="Istanbul traffic forecasting, Graph Neural Networks, GNN, Graph Transformer, ST-GNN, urban AI, traffic prediction, uncertainty quantification, intelligent transportation systems, Faramarz Kowsari">
+<meta name="author" content="Faramarz Kowsari">
+<link rel="canonical" href="https://faramarzkowsari.github.io/istanbul-graphtraffic-ai/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://faramarzkowsari.github.io/istanbul-graphtraffic-ai/">
+<meta property="og:title" content="İstanbul GraphTraffic AI">
+<meta property="og:description" content="Graph Neural Networks, Graph Transformers, uncertainty quantification and sensor-failure resilience for multi-horizon Istanbul traffic forecasting.">
+<meta property="og:image" content="https://faramarzkowsari.github.io/istanbul-graphtraffic-ai/assets/social-preview.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="İstanbul GraphTraffic AI">
+<meta name="twitter:description" content="Uncertainty-aware spatiotemporal graph learning for Istanbul traffic forecasting.">
+<meta name="twitter:image" content="https://faramarzkowsari.github.io/istanbul-graphtraffic-ai/assets/social-preview.png">
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <title>İstanbul GraphTraffic AI — Faramarz Kowsari</title>
-
-  <meta
-    name="description"
-    content="Uncertainty-aware spatiotemporal graph learning for multi-horizon traffic forecasting in Istanbul."
-  >
-
-  <meta
-    name="keywords"
-    content="Istanbul traffic forecasting, Graph Neural Networks, GNN, Graph Transformer, ST-GNN, urban AI, traffic prediction, uncertainty quantification, intelligent transportation systems, Faramarz Kowsari"
-  >
-
-  <meta name="author" content="Faramarz Kowsari">
-
-  <link
-    rel="canonical"
-    href="https://faramarzkowsari.github.io/istanbul-graphtraffic-ai/"
-  >
-
-  <meta property="og:type" content="website">
-
-  <meta
-    property="og:url"
-    content="https://faramarzkowsari.github.io/istanbul-graphtraffic-ai/"
-  >
-
-  <meta
-    property="og:title"
-    content="İstanbul GraphTraffic AI"
-  >
-
-  <meta
-    property="og:description"
-    content="Graph Neural Networks, Graph Transformers, uncertainty quantification and sensor-failure resilience for multi-horizon Istanbul traffic forecasting."
-  >
-
-  <meta
-    property="og:image"
-    content="https://faramarzkowsari.github.io/istanbul-graphtraffic-ai/assets/social-preview.png"
-  >
-
-  <meta name="twitter:card" content="summary_large_image">
-
-  <meta
-    name="twitter:title"
-    content="İstanbul GraphTraffic AI"
-  >
-
-  <meta
-    name="twitter:description"
-    content="Uncertainty-aware spatiotemporal graph learning for Istanbul traffic forecasting."
-  >
-
-  <meta
-    name="twitter:image"
-    content="https://faramarzkowsari.github.io/istanbul-graphtraffic-ai/assets/social-preview.png"
-  >
-
-  <link rel="stylesheet" href="assets/site.css">
-
-  <style>
-    html {
-      scroll-behavior: smooth;
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://faramarzkowsari.github.io/#faramarz-kowsari",
+      "name": "Faramarz Kowsari",
+      "url": "https://faramarzkowsari.github.io/",
+      "jobTitle": "Author, Software Engineer and AI Researcher",
+      "sameAs": [
+        "https://github.com/FaramarzKowsari",
+        "https://orcid.org/0000-0003-1692-0453",
+        "https://scholar.google.com/citations?user=G7tP5WMAAAAJ&hl=en"
+      ]
+    },
+    {
+      "@type": "SoftwareSourceCode",
+      "@id": "https://faramarzkowsari.github.io/istanbul-graphtraffic-ai/#software",
+      "name": "İstanbul GraphTraffic AI",
+      "alternateName": "Istanbul GraphTraffic AI",
+      "description": "Uncertainty-aware spatiotemporal graph learning for multi-horizon traffic forecasting in Istanbul.",
+      "abstract": "A reproducible research software project for graph-based Istanbul traffic forecasting using directed road topology, adaptive graph learning, ST-GNNs, Dynamic Graph Transformers, predictive uncertainty evaluation and sensor-failure resilience.",
+      "url": "https://faramarzkowsari.github.io/istanbul-graphtraffic-ai/",
+      "mainEntityOfPage": {"@id": "https://faramarzkowsari.github.io/istanbul-graphtraffic-ai/#webpage"},
+      "codeRepository": "https://github.com/FaramarzKowsari/istanbul-graphtraffic-ai",
+      "codeSampleType": "full solution",
+      "programmingLanguage": {"@type": "ComputerLanguage", "name": "Python"},
+      "runtimePlatform": "Python 3.10+",
+      "version": "0.1.0",
+      "datePublished": "2026-08-13",
+      "dateModified": "2026-08-13",
+      "license": "https://github.com/FaramarzKowsari/istanbul-graphtraffic-ai/blob/main/LICENSE",
+      "author": {"@id": "https://faramarzkowsari.github.io/#faramarz-kowsari"},
+      "creator": {"@id": "https://faramarzkowsari.github.io/#faramarz-kowsari"},
+      "maintainer": {"@id": "https://faramarzkowsari.github.io/#faramarz-kowsari"},
+      "isAccessibleForFree": true,
+      "image": "https://faramarzkowsari.github.io/istanbul-graphtraffic-ai/assets/social-preview.png",
+      "archivedAt": "https://doi.org/10.5281/zenodo.21916357",
+      "identifier": [
+        {"@type": "PropertyValue", "propertyID": "DOI", "value": "10.5281/zenodo.21916357", "url": "https://doi.org/10.5281/zenodo.21916357"},
+        {"@type": "PropertyValue", "propertyID": "Concept DOI", "value": "10.5281/zenodo.21916358", "url": "https://doi.org/10.5281/zenodo.21916358"}
+      ],
+      "inLanguage": ["en", "tr", "es"],
+      "keywords": ["graph neural networks", "traffic forecasting", "Istanbul", "spatiotemporal learning", "graph transformer", "ST-GNN", "uncertainty quantification", "sensor-failure resilience", "urban artificial intelligence", "intelligent transportation systems"]
+    },
+    {
+      "@type": "CreativeWork",
+      "@id": "https://faramarzkowsari.github.io/istanbul-graphtraffic-ai/#research-project",
+      "name": "İstanbul GraphTraffic AI Research Project",
+      "headline": "Uncertainty-Aware Spatiotemporal Graph Learning for Multi-Horizon Traffic Forecasting",
+      "description": "A reproducible research project investigating directed road topology, adaptive graph learning, ST-GNNs and Dynamic Graph Transformers for multi-horizon Istanbul traffic forecasting, predictive uncertainty and sensor-failure resilience.",
+      "abstract": "The project investigates whether road-topology-aware and learned adaptive graph structures can improve +1h, +2h, +3h and +6h traffic forecasts while preserving uncertainty calibration and robustness under sensor outages.",
+      "url": "https://faramarzkowsari.github.io/istanbul-graphtraffic-ai/",
+      "mainEntityOfPage": {"@id": "https://faramarzkowsari.github.io/istanbul-graphtraffic-ai/#webpage"},
+      "creator": {"@id": "https://faramarzkowsari.github.io/#faramarz-kowsari"},
+      "author": {"@id": "https://faramarzkowsari.github.io/#faramarz-kowsari"},
+      "datePublished": "2026-08-13",
+      "dateModified": "2026-08-13",
+      "version": "0.1.0",
+      "creativeWorkStatus": "Research protocol and executable pipeline",
+      "isAccessibleForFree": true,
+      "license": "https://github.com/FaramarzKowsari/istanbul-graphtraffic-ai/blob/main/LICENSE",
+      "image": "https://faramarzkowsari.github.io/istanbul-graphtraffic-ai/assets/social-preview.png",
+      "inLanguage": ["en", "tr", "es"],
+      "keywords": ["Istanbul traffic forecasting", "graph neural networks", "Graph Transformer", "ST-GNN", "spatiotemporal learning", "uncertainty quantification", "sensor resilience"],
+      "identifier": [
+        {"@type": "PropertyValue", "propertyID": "DOI", "value": "10.5281/zenodo.21916357", "url": "https://doi.org/10.5281/zenodo.21916357"},
+        {"@type": "PropertyValue", "propertyID": "Concept DOI", "value": "10.5281/zenodo.21916358", "url": "https://doi.org/10.5281/zenodo.21916358"}
+      ],
+      "hasPart": [
+        {"@type": "WebPage", "name": "Research Findings", "url": "https://faramarzkowsari.github.io/istanbul-graphtraffic-ai/research-findings.html"},
+        {"@type": "CreativeWork", "name": "Research Protocol", "url": "https://github.com/FaramarzKowsari/istanbul-graphtraffic-ai/blob/main/docs/research_protocol.md"},
+        {"@type": "CreativeWork", "name": "Novelty Audit", "url": "https://github.com/FaramarzKowsari/istanbul-graphtraffic-ai/blob/main/docs/novelty_audit.md"}
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://faramarzkowsari.github.io/istanbul-graphtraffic-ai/#webpage",
+      "url": "https://faramarzkowsari.github.io/istanbul-graphtraffic-ai/",
+      "name": "İstanbul GraphTraffic AI — Faramarz Kowsari",
+      "description": "Uncertainty-aware spatiotemporal graph learning for multi-horizon traffic forecasting in Istanbul.",
+      "author": {"@id": "https://faramarzkowsari.github.io/#faramarz-kowsari"},
+      "datePublished": "2026-08-13",
+      "dateModified": "2026-08-13",
+      "inLanguage": ["en", "tr", "es"],
+      "primaryImageOfPage": {"@type": "ImageObject", "url": "https://faramarzkowsari.github.io/istanbul-graphtraffic-ai/assets/social-preview.png"},
+      "mainEntity": [
+        {"@id": "https://faramarzkowsari.github.io/istanbul-graphtraffic-ai/#software"},
+        {"@id": "https://faramarzkowsari.github.io/istanbul-graphtraffic-ai/#research-project"}
+      ]
     }
-
-    body {
-      min-height: 100vh;
-    }
-
-    .hero-preview {
-      margin: 0 0 34px;
-      border: 1px solid var(--line);
-      border-radius: 24px;
-      overflow: hidden;
-      background: var(--panel);
-      box-shadow: 0 24px 70px rgba(0, 0, 0, .22);
-    }
-
-    .hero-preview img {
-      display: block;
-      width: 100%;
-      height: auto;
-    }
-
-    .language-switcher {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin: 28px auto 42px;
-      padding: 10px;
-      width: fit-content;
-      max-width: 100%;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      background: rgba(7, 19, 31, .92);
-    }
-
-    .language-switcher button {
-      appearance: none;
-      border: 1px solid transparent;
-      background: transparent;
-      color: var(--muted);
-      padding: 10px 18px;
-      border-radius: 999px;
-      font: inherit;
-      font-weight: 700;
-      cursor: pointer;
-      transition:
-        background .18s ease,
-        color .18s ease,
-        border-color .18s ease;
-    }
-
-    .language-switcher button:hover {
-      color: var(--ink);
-      border-color: var(--line);
-    }
-
-    .language-switcher button.active {
-      color: #04111b;
-      background: var(--cyan);
-      border-color: var(--cyan);
-    }
-
-    .language-panel {
-      display: none;
-    }
-
-    .language-panel.active {
-      display: block;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 22px;
-    }
-
-    .hero-actions a {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      padding: 9px 13px;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      text-decoration: none;
-      font-weight: 600;
-      background: rgba(13, 32, 49, .62);
-    }
-
-    .hero-actions a:hover {
-      border-color: var(--cyan);
-    }
-
-    .badge-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 18px;
-      align-items: center;
-    }
-
-    .badge-row img {
-      display: block;
-      height: 20px;
-    }
-
-    .graph-image,
-    .workflow-image {
-      margin-top: 22px;
-      border: 1px solid var(--line);
-      border-radius: 22px;
-      overflow: hidden;
-      background: var(--panel);
-      box-shadow: 0 18px 50px rgba(0, 0, 0, .24);
-    }
-
-    .graph-image img,
-    .workflow-image img {
-      display: block;
-      width: 100%;
-      height: auto;
-    }
-
-    .graph-caption,
-    .workflow-caption {
-      margin-top: 12px;
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.65;
-    }
-
-    .archive {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 18px;
-    }
-
-    .archive-card {
-      background: linear-gradient(
-        145deg,
-        rgba(15, 42, 64, .95),
-        rgba(10, 24, 36, .95)
-      );
-      border: 1px solid var(--line);
-      border-radius: 20px;
-      padding: 22px;
-    }
-
-    .archive-card.primary {
-      border-color: rgba(84, 210, 255, .45);
-      box-shadow: inset 0 0 35px rgba(84, 210, 255, .04);
-    }
-
-    .archive-label {
-      color: var(--muted);
-      font-size: 13px;
-      text-transform: uppercase;
-      letter-spacing: .1em;
-      margin-bottom: 7px;
-    }
-
-    .doi {
-      display: block;
-      margin: 8px 0 13px;
-      font-size: clamp(17px, 2vw, 22px);
-      font-weight: 750;
-      word-break: break-word;
-      color: var(--cyan);
-    }
-
-    .archive-note {
-      color: var(--muted);
-      margin: 0;
-    }
-
-    .citation-box {
-      padding: 20px;
-      border-left: 4px solid var(--cyan);
-      background: rgba(13, 32, 49, .7);
-      border-radius: 10px;
-    }
-
-    .citation-box p {
-      margin: 0;
-    }
-
-    .status-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 12px;
-      margin-top: 18px;
-    }
-
-    .status-item {
-      text-align: center;
-      border: 1px solid var(--line);
-      border-radius: 15px;
-      padding: 14px 10px;
-      background: rgba(13, 32, 49, .62);
-    }
-
-    .status-item strong {
-      display: block;
-      color: var(--cyan);
-      font-size: 18px;
-    }
-
-    .status-item span {
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    .doc-links {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
-    }
-
-    .doc-links a {
-      display: block;
-      padding: 15px 17px;
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      background: rgba(13, 32, 49, .65);
-      text-decoration: none;
-    }
-
-    .doc-links a:hover {
-      border-color: var(--cyan);
-    }
-
-    .author-links {
-      margin-top: 12px;
-      line-height: 2;
-    }
-
-    footer {
-      margin-top: 60px;
-      padding: 28px 0 10px;
-      border-top: 1px solid var(--line);
-      color: var(--muted);
-      text-align: center;
-    }
-
-    footer strong {
-      color: var(--ink);
-    }
-
-    .footer-doi {
-      display: inline-block;
-      margin-top: 8px;
-    }
-
-    @media (max-width: 900px) {
-      .archive,
-      .doc-links {
-        grid-template-columns: 1fr;
-      }
-
-      .status-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    @media (max-width: 600px) {
-      .language-switcher {
-        border-radius: 20px;
-        width: 100%;
-      }
-
-      .language-switcher button {
-        flex: 1;
-        padding: 9px 8px;
-      }
-
-      .status-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .graph-image,
-      .workflow-image {
-        border-radius: 16px;
-      }
-    }
-  </style>
-</head>
-
-<body>
-
-<main class="wrap">
-
-  <!-- HERO -->
-
-  <div class="hero-preview">
-    <img
-      src="assets/social-preview.png"
-      alt="İstanbul GraphTraffic AI research project"
-    >
-  </div>
-
-  <header>
-
-    <div class="hero">
-
-      <div class="eyebrow">
-        Research-grade Urban AI · Istanbul
-      </div>
-
-      <h1>
-        İstanbul<br>
-        GraphTraffic AI
-      </h1>
-
-      <p>
-        Uncertainty-Aware Spatiotemporal Graph Learning
-        for Multi-Horizon Traffic Forecasting
-      </p>
-
-      <div>
-        <span class="tag">Graph Transformer</span>
-        <span class="tag">ST-GNN</span>
-        <span class="tag">Traffic Forecasting</span>
-        <span class="tag">Uncertainty</span>
-        <span class="tag">Sensor Resilience</span>
-        <span class="tag">Open Data</span>
-      </div>
-
-      <div class="badge-row">
-
-        <a
-          href="https://github.com/FaramarzKowsari/istanbul-graphtraffic-ai/actions"
-          target="_blank"
-          rel="noopener"
-        >
-          <img
-            src="https://img.shields.io/github/actions/workflow/status/FaramarzKowsari/istanbul-graphtraffic-ai/ci.yml?branch=main&label=CI"
-            alt="CI status"
-          >
-        </a>
-
-        <a
-          href="https://github.com/FaramarzKowsari/istanbul-graphtraffic-ai/releases/tag/v0.1.0"
-          target="_blank"
-          rel="noopener"
-        >
-          <img
-            src="https://img.shields.io/badge/release-v0.1.0-blue"
-            alt="Release v0.1.0"
-          >
-        </a>
-
-        <a
-          href="https://doi.org/10.5281/zenodo.21916357"
-          target="_blank"
-          rel="noopener"
-        >
-          <img
-            src="https://img.shields.io/badge/DOI-10.5281%2Fzenodo.21916357-blue"
-            alt="Zenodo DOI 10.5281/zenodo.21916357"
-          >
-        </a>
-
-        <img
-          src="https://img.shields.io/badge/license-MIT-green"
-          alt="MIT License"
-        >
-
-        <img
-          src="https://img.shields.io/badge/python-3.10%2B-blue"
-          alt="Python 3.10+"
-        >
-
-      </div>
-
-      <div class="hero-actions">
-
-        <a
-          href="https://github.com/FaramarzKowsari/istanbul-graphtraffic-ai"
-          target="_blank"
-          rel="noopener"
-        >
-          GitHub Repository
-        </a>
-
-        <a
-          href="https://github.com/FaramarzKowsari/istanbul-graphtraffic-ai/releases/tag/v0.1.0"
-          target="_blank"
-          rel="noopener"
-        >
-          Release v0.1.0
-        </a>
-
-        <a
-          href="https://doi.org/10.5281/zenodo.21916357"
-          target="_blank"
-          rel="noopener"
-        >
-          Zenodo Version DOI
-        </a>
-
-      </div>
-
-    </div>
-
-    <aside class="profile">
-
-      <img
-        src="https://avatars.githubusercontent.com/u/105053743?v=4&s=512"
-        alt="Faramarz Kowsari"
-      >
-
-      <h3>Faramarz Kowsari</h3>
-
-      <p>
-        Author · Software Engineer · AI Researcher<br>
-        Istanbul, Türkiye
-      </p>
-
-      <p class="author-links">
-
-        <a
-          href="https://faramarzkowsari.github.io"
-          target="_blank"
-          rel="noopener"
-        >
-          Official Website
-        </a>
-
-        ·
-
-        <a
-          href="https://github.com/FaramarzKowsari"
-          target="_blank"
-          rel="noopener"
-        >
-          GitHub
-        </a>
-
-        ·
-
-        <a
-          href="https://orcid.org/0000-0003-1692-0453"
-          target="_blank"
-          rel="noopener"
-        >
-          ORCID
-        </a>
-
-        ·
-
-        <a
-          href="https://scholar.google.com/citations?user=G7tP5WMAAAAJ&hl=en"
-          target="_blank"
-          rel="noopener"
-        >
-          Google Scholar
-        </a>
-
-      </p>
-
-    </aside>
-
-  </header>
-
-  <!-- LANGUAGE SWITCHER -->
-
-  <nav
-    class="language-switcher"
-    aria-label="Language selector"
-  >
-
-    <button
-      class="lang-btn active"
-      data-lang="en"
-      type="button"
-      aria-pressed="true"
-    >
-      English
-    </button>
-
-    <button
-      class="lang-btn"
-      data-lang="tr"
-      type="button"
-      aria-pressed="false"
-    >
-      Türkçe
-    </button>
-
-    <button
-      class="lang-btn"
-      data-lang="es"
-      type="button"
-      aria-pressed="false"
-    >
-      Español
-    </button>
-
-  </nav>
-
-  <!-- ENGLISH -->
-
-  <div
-    id="lang-en"
-    class="language-panel active"
-  >
-
-    <div class="notice">
-
-      <strong>Research status:</strong>
-
-      v0.1.0 contains the research protocol and executable pipeline.
-      Final real-data benchmark superiority is intentionally not claimed
-      before documented confirmatory experiments.
-
-    </div>
-
-    <section>
-
-      <h2>Scientific question</h2>
-
-      <p>
-        Can a directed road-topology graph combined with learned adaptive
-        connectivity improve hourly +1h, +2h, +3h and +6h traffic forecasts
-        while retaining calibrated uncertainty and resilience to sensor
-        failures?
-      </p>
-
-    </section>
-
-    <section class="grid">
-
-      <div class="card">
-        <h3>Physical graph</h3>
-        <p>
-          Sensor relationships can be represented through geographic kNN
-          connectivity or a directed drivable OpenStreetMap road network.
-        </p>
-      </div>
-
-      <div class="card">
-        <h3>Adaptive graph</h3>
-        <p>
-          Learned node representations can identify predictive dependencies
-          that static road topology alone may fail to capture.
-        </p>
-      </div>
-
-      <div class="card">
-        <h3>Predictive uncertainty</h3>
-        <p>
-          Quantile forecasts expose interval coverage and width instead of
-          hiding uncertainty behind a single point estimate.
-        </p>
-      </div>
-
-      <div class="card">
-        <h3>Multi-horizon forecasting</h3>
-        <p>
-          Performance is evaluated independently at +1, +2, +3 and +6 hours
-          for the hourly source data.
-        </p>
-      </div>
-
-      <div class="card">
-        <h3>Failure resilience</h3>
-        <p>
-          Random and structured 10%, 20% and 30% sensor outages quantify
-          robustness under incomplete traffic observations.
-        </p>
-      </div>
-
-      <div class="card">
-        <h3>Evidence first</h3>
-        <p>
-          Scientific findings are intended to originate from machine-readable
-          experiment outputs rather than manually entered benchmark values.
-        </p>
-      </div>
-
-    </section>
-
-    <section>
-
-      <h2>Istanbul as a graph</h2>
-
-      <div class="graph-image">
-        <img
-          src="assets/istanbul-graph-network.png"
-          alt="Istanbul traffic sensor and road network represented as a graph"
-          loading="lazy"
-        >
-      </div>
-
-      <p class="graph-caption">
-        Conceptual visualization of Istanbul's urban mobility network as an
-        interconnected graph of road corridors, traffic sensors and spatial
-        dependencies across the European and Asian sides of the city.
-      </p>
-
-    </section>
-
-    <section>
-
-      <h2>Research workflow</h2>
-
-      <div class="workflow-image">
-        <img
-          src="assets/research-workflow.png"
-          alt="İstanbul GraphTraffic AI research workflow from traffic observations to versioned research findings"
-          loading="lazy"
-        >
-      </div>
-
-      <p class="workflow-caption">
-        End-to-end research architecture: hourly traffic observations are
-        audited and normalized, transformed into spatiotemporal tensors,
-        connected through alternative graph structures, processed by baseline
-        and graph-learning models, evaluated across multiple forecasting
-        horizons, and preserved as reproducible research artifacts.
-      </p>
-
-    </section>
-
-    <section>
-
-      <h2>Current research stage</h2>
-
-      <div class="status-grid">
-
-        <div class="status-item">
-          <strong>v0.1.0</strong>
-          <span>Current release</span>
-        </div>
-
-        <div class="status-item">
-          <strong>+1/+2/+3/+6h</strong>
-          <span>Forecast horizons</span>
-        </div>
-
-        <div class="status-item">
-          <strong>10/20/30%</strong>
-          <span>Sensor-failure tests</span>
-        </div>
-
-        <div class="status-item">
-          <strong>MIT</strong>
-          <span>Code license</span>
-        </div>
-
-      </div>
-
-      <p>
-        The repository is prepared for data audit, real graph construction,
-        baseline benchmarking and confirmatory experiments. Synthetic data are
-        provided only to verify end-to-end pipeline execution.
-      </p>
-
-    </section>
-
-  </div>
-
-  <!-- TURKISH -->
-
-  <div
-    id="lang-tr"
-    class="language-panel"
-  >
-
-    <div class="notice">
-
-      <strong>Araştırma durumu:</strong>
-
-      v0.1.0 araştırma protokolünü ve çalıştırılabilir pipeline'ı içerir.
-      Gerçek veri üzerinde doğrulayıcı deneyler tamamlanmadan nihai benchmark
-      üstünlüğü iddia edilmez.
-
-    </div>
-
-    <section>
-
-      <h2>Bilimsel soru</h2>
-
-      <p>
-        Yönlü yol topolojisi ile öğrenilebilir adaptif bağlantıları birleştiren
-        bir grafik modeli; belirsizlik kalibrasyonunu ve sensör arızalarına
-        dayanıklılığı koruyarak +1, +2, +3 ve +6 saatlik İstanbul trafik
-        tahminlerini geliştirebilir mi?
-      </p>
-
-    </section>
-
-    <section class="grid">
-
-      <div class="card">
-        <h3>Fiziksel grafik</h3>
-        <p>
-          Sensör ilişkileri coğrafi kNN bağlantılarıyla veya yönlü,
-          sürüşe uygun OpenStreetMap yol ağı üzerinden modellenebilir.
-        </p>
-      </div>
-
-      <div class="card">
-        <h3>Adaptif grafik</h3>
-        <p>
-          Öğrenilen düğüm temsilleri, sabit yol topolojisinin tek başına
-          yakalayamadığı tahmine yönelik bağımlılıkları ortaya çıkarabilir.
-        </p>
-      </div>
-
-      <div class="card">
-        <h3>Tahmin belirsizliği</h3>
-        <p>
-          Quantile çıktıları yalnızca tek bir tahmin değeri vermek yerine
-          tahmin aralıklarını, coverage değerlerini ve aralık genişliğini
-          ölçmeyi sağlar.
-        </p>
-      </div>
-
-      <div class="card">
-        <h3>Çok ufuklu tahmin</h3>
-        <p>
-          Saatlik veri için performans +1, +2, +3 ve +6 saat ufuklarında
-          ayrı ayrı değerlendirilir.
-        </p>
-      </div>
-
-      <div class="card">
-        <h3>Sensör arızası dayanıklılığı</h3>
-        <p>
-          Rastgele ve yapısal %10, %20 ve %30 sensör kaybı senaryoları
-          model dayanıklılığını ölçer.
-        </p>
-      </div>
-
-      <div class="card">
-        <h3>Önce kanıt</h3>
-        <p>
-          Bilimsel bulguların manuel olarak HTML'e yazılması yerine,
-          makine tarafından okunabilir deney çıktılarından üretilmesi
-          hedeflenir.
-        </p>
-      </div>
-
-    </section>
-
-    <section>
-
-      <h2>Bir grafik olarak İstanbul</h2>
-
-      <div class="graph-image">
-        <img
-          src="assets/istanbul-graph-network.png"
-          alt="İstanbul trafik sensörleri ve yol ağının grafik gösterimi"
-          loading="lazy"
-        >
-      </div>
-
-      <p class="graph-caption">
-        İstanbul'un Avrupa ve Asya yakalarındaki yol koridorları, trafik
-        sensörleri ve mekânsal bağımlılıkların birbirine bağlı bir grafik
-        ağı olarak kavramsal gösterimi.
-      </p>
-
-    </section>
-
-    <section>
-
-      <h2>Araştırma akışı</h2>
-
-      <div class="workflow-image">
-        <img
-          src="assets/research-workflow.png"
-          alt="İstanbul GraphTraffic AI araştırma iş akışı"
-          loading="lazy"
-        >
-      </div>
-
-      <p class="workflow-caption">
-        Uçtan uca araştırma mimarisi; saatlik trafik gözlemlerinin denetlenmesi
-        ve normalleştirilmesinden zamansal-mekânsal tensörlere, alternatif
-        grafik yapılarına, tahmin modellerine, çok ufuklu değerlendirmeye ve
-        sürümlenmiş yeniden üretilebilir araştırma çıktılarına kadar tüm süreci
-        gösterir.
-      </p>
-
-    </section>
-
-    <section>
-
-      <h2>Güncel araştırma aşaması</h2>
-
-      <div class="status-grid">
-
-        <div class="status-item">
-          <strong>v0.1.0</strong>
-          <span>Güncel sürüm</span>
-        </div>
-
-        <div class="status-item">
-          <strong>+1/+2/+3/+6</strong>
-          <span>Saatlik tahmin ufukları</span>
-        </div>
-
-        <div class="status-item">
-          <strong>%10/%20/%30</strong>
-          <span>Sensör arızası testleri</span>
-        </div>
-
-        <div class="status-item">
-          <strong>MIT</strong>
-          <span>Kod lisansı</span>
-        </div>
-
-      </div>
-
-      <p>
-        Depo; veri denetimi, gerçek grafik oluşturma, baseline benchmark'ları
-        ve doğrulayıcı deneyler için hazırlanmıştır. Sentetik veri yalnızca
-        pipeline'ın uçtan uca doğru çalıştığını doğrulamak amacıyla kullanılır.
-      </p>
-
-    </section>
-
-  </div>
-
-  <!-- SPANISH -->
-
-  <div
-    id="lang-es"
-    class="language-panel"
-  >
-
-    <div class="notice">
-
-      <strong>Estado de la investigación:</strong>
-
-      v0.1.0 contiene el protocolo de investigación y el pipeline ejecutable.
-      No se afirma una superioridad definitiva en benchmarks de datos reales
-      antes de completar los experimentos confirmatorios documentados.
-
-    </div>
-
-    <section>
-
-      <h2>Pregunta científica</h2>
-
-      <p>
-        ¿Puede un grafo dirigido basado en la topología viaria, combinado con
-        conexiones adaptativas aprendidas, mejorar las predicciones de tráfico
-        de Estambul a +1, +2, +3 y +6 horas manteniendo una incertidumbre
-        calibrada y resiliencia frente a fallos de sensores?
-      </p>
-
-    </section>
-
-    <section class="grid">
-
-      <div class="card">
-        <h3>Grafo físico</h3>
-        <p>
-          Las relaciones entre sensores pueden representarse mediante
-          conectividad geográfica kNN o una red viaria dirigida y transitable
-          obtenida de OpenStreetMap.
-        </p>
-      </div>
-
-      <div class="card">
-        <h3>Grafo adaptativo</h3>
-        <p>
-          Las representaciones aprendidas de los nodos pueden descubrir
-          dependencias predictivas que la topología física estática no
-          consigue capturar por sí sola.
-        </p>
-      </div>
-
-      <div class="card">
-        <h3>Incertidumbre predictiva</h3>
-        <p>
-          Las predicciones por cuantiles permiten evaluar cobertura y anchura
-          de los intervalos en lugar de ocultar la incertidumbre detrás de una
-          única estimación puntual.
-        </p>
-      </div>
-
-      <div class="card">
-        <h3>Predicción multihorizonte</h3>
-        <p>
-          El rendimiento se evalúa de forma independiente para horizontes
-          de +1, +2, +3 y +6 horas sobre los datos horarios.
-        </p>
-      </div>
-
-      <div class="card">
-        <h3>Resiliencia ante fallos</h3>
-        <p>
-          Escenarios aleatorios y estructurados con pérdida del 10 %, 20 %
-          y 30 % de sensores permiten cuantificar la robustez del modelo.
-        </p>
-      </div>
-
-      <div class="card">
-        <h3>Primero la evidencia</h3>
-        <p>
-          Los resultados científicos deben generarse a partir de salidas
-          experimentales legibles por máquina, y no mediante cifras de
-          benchmark introducidas manualmente.
-        </p>
-      </div>
-
-    </section>
-
-    <section>
-
-      <h2>Estambul como grafo</h2>
-
-      <div class="graph-image">
-        <img
-          src="assets/istanbul-graph-network.png"
-          alt="Red viaria y sensores de tráfico de Estambul representados como grafo"
-          loading="lazy"
-        >
-      </div>
-
-      <p class="graph-caption">
-        Visualización conceptual de la movilidad urbana de Estambul como una
-        red interconectada de corredores viarios, sensores de tráfico y
-        dependencias espaciales entre las zonas europea y asiática.
-      </p>
-
-    </section>
-
-    <section>
-
-      <h2>Flujo de investigación</h2>
-
-      <div class="workflow-image">
-        <img
-          src="assets/research-workflow.png"
-          alt="Flujo de investigación de İstanbul GraphTraffic AI"
-          loading="lazy"
-        >
-      </div>
-
-      <p class="workflow-caption">
-        La arquitectura de investigación de extremo a extremo abarca la
-        auditoría y normalización de las observaciones horarias, la construcción
-        de tensores espaciotemporales, los grafos alternativos, los modelos
-        predictivos, la evaluación multihorizonte y la conservación de
-        resultados reproducibles y versionados.
-      </p>
-
-    </section>
-
-    <section>
-
-      <h2>Fase actual de investigación</h2>
-
-      <div class="status-grid">
-
-        <div class="status-item">
-          <strong>v0.1.0</strong>
-          <span>Versión actual</span>
-        </div>
-
-        <div class="status-item">
-          <strong>+1/+2/+3/+6 h</strong>
-          <span>Horizontes predictivos</span>
-        </div>
-
-        <div class="status-item">
-          <strong>10/20/30 %</strong>
-          <span>Pruebas de fallos</span>
-        </div>
-
-        <div class="status-item">
-          <strong>MIT</strong>
-          <span>Licencia del código</span>
-        </div>
-
-      </div>
-
-      <p>
-        El repositorio está preparado para auditoría de datos, construcción
-        del grafo real, benchmarking de modelos base y experimentos
-        confirmatorios. Los datos sintéticos se utilizan exclusivamente para
-        verificar la ejecución completa del pipeline.
-      </p>
-
-    </section>
-
-  </div>
-
-  <!-- RESEARCH ARCHIVE -->
-
-  <section id="archive">
-
-    <h2>
-      Research Archive · Araştırma Arşivi · Archivo de Investigación
-    </h2>
-
-    <div class="archive">
-
-      <div class="archive-card primary">
-
-        <div class="archive-label">
-          Exact archived release · v0.1.0
-        </div>
-
-        <strong>Version DOI</strong>
-
-        <a
-          class="doi"
-          href="https://doi.org/10.5281/zenodo.21916357"
-          target="_blank"
-          rel="noopener"
-        >
-          10.5281/zenodo.21916357
-        </a>
-
-        <p class="archive-note">
-          Identifies the exact archived v0.1.0 research release.
-          Bu DOI, v0.1.0 sürümünü tanımlar.
-          Este DOI identifica exactamente la versión archivada v0.1.0.
-        </p>
-
-      </div>
-
-      <div class="archive-card">
-
-        <div class="archive-label">
-          All versions · Project-level identifier
-        </div>
-
-        <strong>Concept DOI</strong>
-
-        <a
-          class="doi"
-          href="https://doi.org/10.5281/zenodo.21916358"
-          target="_blank"
-          rel="noopener"
-        >
-          10.5281/zenodo.21916358
-        </a>
-
-        <p class="archive-note">
-          Represents the evolving İstanbul GraphTraffic AI project across
-          released versions.
-        </p>
-
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- CITATION -->
-
-  <section>
-
-    <h2>
-      Citation · Atıf · Citación
-    </h2>
-
-    <div class="citation-box">
-
-      <p>
-        Kowsari, F. (2026).
-        <em>İstanbul GraphTraffic AI</em>
-        (Version 0.1.0).
-        Zenodo.
-        <a
-          href="https://doi.org/10.5281/zenodo.21916357"
-          target="_blank"
-          rel="noopener"
-        >
-          https://doi.org/10.5281/zenodo.21916357
-        </a>
-      </p>
-
-    </div>
-
-  </section>
-
-  <!-- DOCUMENTATION -->
-
-  <section>
-
-    <h2>
-      Research Documentation · Araştırma Belgeleri · Documentación
-    </h2>
-
-    <div class="doc-links">
-
-      <a href="research-findings.html">
-        <strong>Research Findings</strong><br>
-        Current evidence and generated findings
-      </a>
-
-      <a
-        href="https://github.com/FaramarzKowsari/istanbul-graphtraffic-ai/blob/main/docs/research_protocol.md"
-        target="_blank"
-        rel="noopener"
-      >
-        <strong>Research Protocol</strong><br>
-        Experimental design and validation protocol
-      </a>
-
-      <a
-        href="https://github.com/FaramarzKowsari/istanbul-graphtraffic-ai/blob/main/docs/novelty_audit.md"
-        target="_blank"
-        rel="noopener"
-      >
-        <strong>Novelty Audit</strong><br>
-        Relationship to prior Istanbul traffic-graph research
-      </a>
-
-      <a
-        href="https://github.com/FaramarzKowsari/istanbul-graphtraffic-ai/blob/main/docs/data_sources.md"
-        target="_blank"
-        rel="noopener"
-      >
-        <strong>Data Sources</strong><br>
-        Dataset provenance and usage notes
-      </a>
-
-      <a
-        href="https://github.com/FaramarzKowsari/istanbul-graphtraffic-ai/blob/main/docs/experiment_matrix.md"
-        target="_blank"
-        rel="noopener"
-      >
-        <strong>Experiment Matrix</strong><br>
-        Planned experimental comparisons
-      </a>
-
-      <a
-        href="https://github.com/FaramarzKowsari/istanbul-graphtraffic-ai/blob/main/docs/paper_grade_pipeline.md"
-        target="_blank"
-        rel="noopener"
-      >
-        <strong>Paper-grade Pipeline</strong><br>
-        Publication-oriented experimental workflow
-      </a>
-
-    </div>
-
-  </section>
-
-  <!-- AUTHOR -->
-
-  <section>
-
-    <h2>
-      Author · Yazar · Autor
-    </h2>
-
-    <div class="profile">
-
-      <img
-        src="https://avatars.githubusercontent.com/u/105053743?v=4&s=512"
-        alt="Faramarz Kowsari"
-      >
-
-      <h3>Faramarz Kowsari</h3>
-
-      <p>
-        Author · Software Engineer · AI Researcher<br>
-        Istanbul, Türkiye
-      </p>
-
-      <p class="author-links">
-
-        <a
-          href="https://faramarzkowsari.github.io"
-          target="_blank"
-          rel="noopener"
-        >
-          Official Website
-        </a>
-
-        ·
-
-        <a
-          href="https://github.com/FaramarzKowsari"
-          target="_blank"
-          rel="noopener"
-        >
-          GitHub
-        </a>
-
-        ·
-
-        <a
-          href="https://orcid.org/0000-0003-1692-0453"
-          target="_blank"
-          rel="noopener"
-        >
-          ORCID
-        </a>
-
-        ·
-
-        <a
-          href="https://scholar.google.com/citations?user=G7tP5WMAAAAJ&hl=en"
-          target="_blank"
-          rel="noopener"
-        >
-          Google Scholar
-        </a>
-
-      </p>
-
-    </div>
-
-  </section>
-
-  <!-- FOOTER -->
-
-  <footer>
-
-    <strong>
-      İstanbul GraphTraffic AI
-    </strong>
-
-    <br>
-
-    Faramarz Kowsari · Istanbul, Türkiye
-
-    <br>
-
-    Release v0.1.0 · MIT License
-
-    <br>
-
-    <a
-      class="footer-doi"
-      href="https://doi.org/10.5281/zenodo.21916357"
-      target="_blank"
-      rel="noopener"
-    >
-      DOI: 10.5281/zenodo.21916357
-    </a>
-
-  </footer>
-
-</main>
-
-<script>
-  const buttons = document.querySelectorAll(".lang-btn");
-  const panels = document.querySelectorAll(".language-panel");
-  const supportedLanguages = ["en", "tr", "es"];
-
-  function setLanguage(lang) {
-
-    if (!supportedLanguages.includes(lang)) {
-      lang = "en";
-    }
-
-    panels.forEach(panel => {
-      panel.classList.remove("active");
-    });
-
-    buttons.forEach(button => {
-      button.classList.remove("active");
-      button.setAttribute("aria-pressed", "false");
-    });
-
-    const selectedPanel =
-      document.getElementById("lang-" + lang);
-
-    const selectedButton =
-      document.querySelector(
-        '.lang-btn[data-lang="' + lang + '"]'
-      );
-
-    if (selectedPanel) {
-      selectedPanel.classList.add("active");
-    }
-
-    if (selectedButton) {
-      selectedButton.classList.add("active");
-      selectedButton.setAttribute(
-        "aria-pressed",
-        "true"
-      );
-    }
-
-    document.documentElement.lang = lang;
-
-    localStorage.setItem(
-      "graphtraffic-language",
-      lang
-    );
-  }
-
-  buttons.forEach(button => {
-
-    button.addEventListener("click", () => {
-      setLanguage(button.dataset.lang);
-    });
-
-  });
-
-  const savedLanguage =
-    localStorage.getItem(
-      "graphtraffic-language"
-    );
-
-  if (
-    savedLanguage &&
-    supportedLanguages.includes(savedLanguage)
-  ) {
-
-    setLanguage(savedLanguage);
-
-  } else {
-
-    const browserLanguage =
-      (navigator.language || "en").toLowerCase();
-
-    if (browserLanguage.startsWith("tr")) {
-
-      setLanguage("tr");
-
-    } else if (browserLanguage.startsWith("es")) {
-
-      setLanguage("es");
-
-    } else {
-
-      setLanguage("en");
-
-    }
-
-  }
+  ]
+}
 </script>
 
+<link rel="stylesheet" href="assets/site.css">
+<style>
+html{scroll-behavior:smooth}body{min-height:100vh}.hero-preview{margin:0 0 34px;border:1px solid var(--line);border-radius:24px;overflow:hidden;background:var(--panel);box-shadow:0 24px 70px rgba(0,0,0,.22)}.hero-preview img,.graph-image img,.workflow-image img{display:block;width:100%;height:auto}.language-switcher{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin:28px auto 42px;padding:10px;width:fit-content;max-width:100%;border:1px solid var(--line);border-radius:999px;background:rgba(7,19,31,.92)}.language-switcher button{appearance:none;border:1px solid transparent;background:transparent;color:var(--muted);padding:10px 18px;border-radius:999px;font:inherit;font-weight:700;cursor:pointer}.language-switcher button:hover{color:var(--ink);border-color:var(--line)}.language-switcher button.active{color:#04111b;background:var(--cyan);border-color:var(--cyan)}.language-panel{display:none}.language-panel.active{display:block}.hero-actions,.badge-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px;align-items:center}.hero-actions a{display:inline-flex;padding:9px 13px;border:1px solid var(--line);border-radius:999px;text-decoration:none;font-weight:600;background:rgba(13,32,49,.62)}.hero-actions a:hover{border-color:var(--cyan)}.badge-row img{display:block;height:20px}.graph-image,.workflow-image{margin-top:22px;border:1px solid var(--line);border-radius:22px;overflow:hidden;background:var(--panel);box-shadow:0 18px 50px rgba(0,0,0,.24)}.graph-caption,.workflow-caption{margin-top:12px;color:var(--muted);font-size:14px;line-height:1.65}.archive{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}.archive-card{background:linear-gradient(145deg,rgba(15,42,64,.95),rgba(10,24,36,.95));border:1px solid var(--line);border-radius:20px;padding:22px}.archive-card.primary{border-color:rgba(84,210,255,.45)}.archive-label{color:var(--muted);font-size:13px;text-transform:uppercase;letter-spacing:.1em;margin-bottom:7px}.doi{display:block;margin:8px 0 13px;font-size:clamp(17px,2vw,22px);font-weight:750;word-break:break-word;color:var(--cyan)}.archive-note{color:var(--muted);margin:0}.citation-box{padding:20px;border-left:4px solid var(--cyan);background:rgba(13,32,49,.7);border-radius:10px}.status-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:18px}.status-item{text-align:center;border:1px solid var(--line);border-radius:15px;padding:14px 10px;background:rgba(13,32,49,.62)}.status-item strong{display:block;color:var(--cyan);font-size:18px}.status-item span{color:var(--muted);font-size:13px}.doc-links{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.doc-links a{display:block;padding:15px 17px;border:1px solid var(--line);border-radius:14px;background:rgba(13,32,49,.65);text-decoration:none}.doc-links a:hover{border-color:var(--cyan)}.author-links{margin-top:12px;line-height:2}footer{margin-top:60px;padding:28px 0 10px;border-top:1px solid var(--line);color:var(--muted);text-align:center}footer strong{color:var(--ink)}@media(max-width:900px){.archive,.doc-links{grid-template-columns:1fr}.status-grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:600px){.language-switcher{border-radius:20px;width:100%}.language-switcher button{flex:1;padding:9px 8px}.status-grid{grid-template-columns:1fr}.graph-image,.workflow-image{border-radius:16px}}
+</style>
+</head>
+<body>
+<main class="wrap">
+<div class="hero-preview"><img src="assets/social-preview.png" alt="İstanbul GraphTraffic AI research project"></div>
+<header>
+<div class="hero">
+<div class="eyebrow">Research-grade Urban AI · Istanbul</div>
+<h1>İstanbul<br>GraphTraffic AI</h1>
+<p>Uncertainty-Aware Spatiotemporal Graph Learning for Multi-Horizon Traffic Forecasting</p>
+<div><span class="tag">Graph Transformer</span><span class="tag">ST-GNN</span><span class="tag">Traffic Forecasting</span><span class="tag">Uncertainty</span><span class="tag">Sensor Resilience</span><span class="tag">Open Data</span></div>
+<div class="badge-row"><a href="https://github.com/FaramarzKowsari/istanbul-graphtraffic-ai/actions"><img src="https://img.shields.io/github/actions/workflow/status/FaramarzKowsari/istanbul-graphtraffic-ai/ci.yml?branch=main&label=CI" alt="CI status"></a><a href="https://github.com/FaramarzKowsari/istanbul-graphtraffic-ai/releases/tag/v0.1.0"><img src="https://img.shields.io/badge/release-v0.1.0-blue" alt="Release v0.1.0"></a><a href="https://doi.org/10.5281/zenodo.21916357"><img src="https://img.shields.io/badge/DOI-10.5281%2Fzenodo.21916357-blue" alt="Zenodo DOI"></a><img src="https://img.shields.io/badge/license-MIT-green" alt="MIT License"><img src="https://img.shields.io/badge/python-3.10%2B-blue" alt="Python 3.10+"></div>
+<div class="hero-actions"><a href="https://github.com/FaramarzKowsari/istanbul-graphtraffic-ai">GitHub Repository</a><a href="https://github.com/FaramarzKowsari/istanbul-graphtraffic-ai/releases/tag/v0.1.0">Release v0.1.0</a><a href="https://doi.org/10.5281/zenodo.21916357">Zenodo Version DOI</a></div>
+</div>
+<aside class="profile"><img src="https://avatars.githubusercontent.com/u/105053743?v=4&s=512" alt="Faramarz Kowsari"><h3>Faramarz Kowsari</h3><p>Author · Software Engineer · AI Researcher<br>Istanbul, Türkiye</p><p class="author-links"><a href="https://faramarzkowsari.github.io">Official Website</a> · <a href="https://github.com/FaramarzKowsari">GitHub</a> · <a href="https://orcid.org/0000-0003-1692-0453">ORCID</a> · <a href="https://scholar.google.com/citations?user=G7tP5WMAAAAJ&hl=en">Google Scholar</a></p></aside>
+</header>
+<nav class="language-switcher" aria-label="Language selector"><button class="lang-btn active" data-lang="en" type="button">English</button><button class="lang-btn" data-lang="tr" type="button">Türkçe</button><button class="lang-btn" data-lang="es" type="button">Español</button></nav>
+
+<div id="lang-en" class="language-panel active">
+<div class="notice"><strong>Research status:</strong> v0.1.0 contains the research protocol and executable pipeline. Final real-data benchmark superiority is intentionally not claimed before documented confirmatory experiments.</div>
+<section><h2>Scientific question</h2><p>Can a directed road-topology graph combined with learned adaptive connectivity improve hourly +1h, +2h, +3h and +6h traffic forecasts while retaining calibrated uncertainty and resilience to sensor failures?</p></section>
+<section class="grid"><div class="card"><h3>Physical graph</h3><p>Sensor relationships can be represented through geographic kNN connectivity or a directed drivable OpenStreetMap road network.</p></div><div class="card"><h3>Adaptive graph</h3><p>Learned node representations can identify predictive dependencies that static road topology alone may fail to capture.</p></div><div class="card"><h3>Predictive uncertainty</h3><p>Quantile forecasts expose interval coverage and width instead of hiding uncertainty behind a single point estimate.</p></div><div class="card"><h3>Multi-horizon forecasting</h3><p>Performance is evaluated independently at +1, +2, +3 and +6 hours for the hourly source data.</p></div><div class="card"><h3>Failure resilience</h3><p>Random and structured 10%, 20% and 30% sensor outages quantify robustness under incomplete traffic observations.</p></div><div class="card"><h3>Evidence first</h3><p>Scientific findings are intended to originate from machine-readable experiment outputs rather than manually entered benchmark values.</p></div></section>
+<section><h2>Istanbul as a graph</h2><div class="graph-image"><img src="assets/istanbul-graph-network.png" alt="Istanbul traffic sensor and road network represented as a graph" loading="lazy"></div><p class="graph-caption">Conceptual visualization of Istanbul's urban mobility network as an interconnected graph of road corridors, traffic sensors and spatial dependencies across the European and Asian sides of the city.</p></section>
+<section><h2>Research workflow</h2><div class="workflow-image"><img src="assets/research-workflow.png" alt="İstanbul GraphTraffic AI research workflow" loading="lazy"></div><p class="workflow-caption">End-to-end research architecture from hourly traffic observations through graph construction, forecasting, evaluation and reproducible research artifacts.</p></section>
+<section><h2>Current research stage</h2><div class="status-grid"><div class="status-item"><strong>v0.1.0</strong><span>Current release</span></div><div class="status-item"><strong>+1/+2/+3/+6h</strong><span>Forecast horizons</span></div><div class="status-item"><strong>10/20/30%</strong><span>Sensor-failure tests</span></div><div class="status-item"><strong>MIT</strong><span>Code license</span></div></div></section>
+</div>
+
+<div id="lang-tr" class="language-panel">
+<div class="notice"><strong>Araştırma durumu:</strong> v0.1.0 araştırma protokolünü ve çalıştırılabilir pipeline'ı içerir. Gerçek veri üzerinde doğrulayıcı deneyler tamamlanmadan nihai benchmark üstünlüğü iddia edilmez.</div>
+<section><h2>Bilimsel soru</h2><p>Yönlü yol topolojisi ile öğrenilebilir adaptif bağlantıları birleştiren bir grafik modeli; belirsizlik kalibrasyonunu ve sensör arızalarına dayanıklılığı koruyarak +1, +2, +3 ve +6 saatlik İstanbul trafik tahminlerini geliştirebilir mi?</p></section>
+<section class="grid"><div class="card"><h3>Fiziksel grafik</h3><p>Sensör ilişkileri coğrafi kNN bağlantılarıyla veya yönlü, sürüşe uygun OpenStreetMap yol ağı üzerinden modellenebilir.</p></div><div class="card"><h3>Adaptif grafik</h3><p>Öğrenilen düğüm temsilleri, sabit yol topolojisinin tek başına yakalayamadığı tahmine yönelik bağımlılıkları ortaya çıkarabilir.</p></div><div class="card"><h3>Tahmin belirsizliği</h3><p>Quantile çıktıları tahmin aralıklarını, coverage değerlerini ve aralık genişliğini ölçmeyi sağlar.</p></div><div class="card"><h3>Çok ufuklu tahmin</h3><p>Saatlik veri için performans +1, +2, +3 ve +6 saat ufuklarında ayrı ayrı değerlendirilir.</p></div><div class="card"><h3>Sensör arızası dayanıklılığı</h3><p>Rastgele ve yapısal %10, %20 ve %30 sensör kaybı senaryoları model dayanıklılığını ölçer.</p></div><div class="card"><h3>Önce kanıt</h3><p>Bilimsel bulguların makine tarafından okunabilir deney çıktılarından üretilmesi hedeflenir.</p></div></section>
+<section><h2>Bir grafik olarak İstanbul</h2><div class="graph-image"><img src="assets/istanbul-graph-network.png" alt="İstanbul trafik sensörleri ve yol ağının grafik gösterimi" loading="lazy"></div><p class="graph-caption">İstanbul'un Avrupa ve Asya yakalarındaki yol koridorları, trafik sensörleri ve mekânsal bağımlılıkların birbirine bağlı bir grafik ağı olarak kavramsal gösterimi.</p></section>
+<section><h2>Araştırma akışı</h2><div class="workflow-image"><img src="assets/research-workflow.png" alt="İstanbul GraphTraffic AI araştırma iş akışı" loading="lazy"></div><p class="workflow-caption">Saatlik trafik gözlemlerinden grafik yapılarına, tahmin modellerine, çok ufuklu değerlendirmeye ve yeniden üretilebilir araştırma çıktılarına uzanan uçtan uca mimari.</p></section>
+<section><h2>Güncel araştırma aşaması</h2><div class="status-grid"><div class="status-item"><strong>v0.1.0</strong><span>Güncel sürüm</span></div><div class="status-item"><strong>+1/+2/+3/+6</strong><span>Saatlik tahmin ufukları</span></div><div class="status-item"><strong>%10/%20/%30</strong><span>Sensör arızası testleri</span></div><div class="status-item"><strong>MIT</strong><span>Kod lisansı</span></div></div></section>
+</div>
+
+<div id="lang-es" class="language-panel">
+<div class="notice"><strong>Estado de la investigación:</strong> v0.1.0 contiene el protocolo de investigación y el pipeline ejecutable. No se afirma una superioridad definitiva en benchmarks de datos reales antes de completar los experimentos confirmatorios documentados.</div>
+<section><h2>Pregunta científica</h2><p>¿Puede un grafo dirigido basado en la topología viaria, combinado con conexiones adaptativas aprendidas, mejorar las predicciones de tráfico de Estambul a +1, +2, +3 y +6 horas manteniendo una incertidumbre calibrada y resiliencia frente a fallos de sensores?</p></section>
+<section class="grid"><div class="card"><h3>Grafo físico</h3><p>Las relaciones entre sensores pueden representarse mediante conectividad geográfica kNN o una red viaria dirigida y transitable obtenida de OpenStreetMap.</p></div><div class="card"><h3>Grafo adaptativo</h3><p>Las representaciones aprendidas de los nodos pueden descubrir dependencias predictivas que la topología física estática no consigue capturar por sí sola.</p></div><div class="card"><h3>Incertidumbre predictiva</h3><p>Las predicciones por cuantiles permiten evaluar cobertura y anchura de los intervalos.</p></div><div class="card"><h3>Predicción multihorizonte</h3><p>El rendimiento se evalúa de forma independiente para horizontes de +1, +2, +3 y +6 horas.</p></div><div class="card"><h3>Resiliencia ante fallos</h3><p>Escenarios con pérdida del 10 %, 20 % y 30 % de sensores permiten cuantificar la robustez del modelo.</p></div><div class="card"><h3>Primero la evidencia</h3><p>Los resultados científicos deben generarse a partir de salidas experimentales legibles por máquina.</p></div></section>
+<section><h2>Estambul como grafo</h2><div class="graph-image"><img src="assets/istanbul-graph-network.png" alt="Red viaria y sensores de tráfico de Estambul representados como grafo" loading="lazy"></div><p class="graph-caption">Visualización conceptual de la movilidad urbana de Estambul como una red interconectada de corredores viarios, sensores de tráfico y dependencias espaciales entre las zonas europea y asiática.</p></section>
+<section><h2>Flujo de investigación</h2><div class="workflow-image"><img src="assets/research-workflow.png" alt="Flujo de investigación de İstanbul GraphTraffic AI" loading="lazy"></div><p class="workflow-caption">Arquitectura de extremo a extremo desde las observaciones horarias hasta los grafos, modelos predictivos, evaluación multihorizonte y resultados reproducibles.</p></section>
+<section><h2>Fase actual de investigación</h2><div class="status-grid"><div class="status-item"><strong>v0.1.0</strong><span>Versión actual</span></div><div class="status-item"><strong>+1/+2/+3/+6 h</strong><span>Horizontes predictivos</span></div><div class="status-item"><strong>10/20/30 %</strong><span>Pruebas de fallos</span></div><div class="status-item"><strong>MIT</strong><span>Licencia del código</span></div></div></section>
+</div>
+
+<section id="archive"><h2>Research Archive · Araştırma Arşivi · Archivo de Investigación</h2><div class="archive"><div class="archive-card primary"><div class="archive-label">Exact archived release · v0.1.0</div><strong>Version DOI</strong><a class="doi" href="https://doi.org/10.5281/zenodo.21916357">10.5281/zenodo.21916357</a><p class="archive-note">Identifies the exact archived v0.1.0 research release. Bu DOI, v0.1.0 sürümünü tanımlar. Este DOI identifica exactamente la versión archivada v0.1.0.</p></div><div class="archive-card"><div class="archive-label">All versions · Project-level identifier</div><strong>Concept DOI</strong><a class="doi" href="https://doi.org/10.5281/zenodo.21916358">10.5281/zenodo.21916358</a><p class="archive-note">Represents the evolving İstanbul GraphTraffic AI project across released versions.</p></div></div></section>
+<section><h2>Citation · Atıf · Citación</h2><div class="citation-box"><p>Kowsari, F. (2026). <em>İstanbul GraphTraffic AI</em> (Version 0.1.0). Zenodo. <a href="https://doi.org/10.5281/zenodo.21916357">https://doi.org/10.5281/zenodo.21916357</a></p></div></section>
+<section><h2>Research Documentation · Araştırma Belgeleri · Documentación</h2><div class="doc-links"><a href="research-findings.html"><strong>Research Findings</strong><br>Current evidence and generated findings</a><a href="https://github.com/FaramarzKowsari/istanbul-graphtraffic-ai/blob/main/docs/research_protocol.md"><strong>Research Protocol</strong><br>Experimental design and validation protocol</a><a href="https://github.com/FaramarzKowsari/istanbul-graphtraffic-ai/blob/main/docs/novelty_audit.md"><strong>Novelty Audit</strong><br>Relationship to prior Istanbul traffic-graph research</a><a href="https://github.com/FaramarzKowsari/istanbul-graphtraffic-ai/blob/main/docs/data_sources.md"><strong>Data Sources</strong><br>Dataset provenance and usage notes</a><a href="https://github.com/FaramarzKowsari/istanbul-graphtraffic-ai/blob/main/docs/experiment_matrix.md"><strong>Experiment Matrix</strong><br>Planned experimental comparisons</a><a href="https://github.com/FaramarzKowsari/istanbul-graphtraffic-ai/blob/main/docs/paper_grade_pipeline.md"><strong>Paper-grade Pipeline</strong><br>Publication-oriented experimental workflow</a></div></section>
+<section><h2>Author · Yazar · Autor</h2><div class="profile"><img src="https://avatars.githubusercontent.com/u/105053743?v=4&s=512" alt="Faramarz Kowsari"><h3>Faramarz Kowsari</h3><p>Author · Software Engineer · AI Researcher<br>Istanbul, Türkiye</p><p class="author-links"><a href="https://faramarzkowsari.github.io">Official Website</a> · <a href="https://github.com/FaramarzKowsari">GitHub</a> · <a href="https://orcid.org/0000-0003-1692-0453">ORCID</a> · <a href="https://scholar.google.com/citations?user=G7tP5WMAAAAJ&hl=en">Google Scholar</a></p></div></section>
+<footer><strong>İstanbul GraphTraffic AI</strong><br>Faramarz Kowsari · Istanbul, Türkiye<br>Release v0.1.0 · MIT License<br><a class="footer-doi" href="https://doi.org/10.5281/zenodo.21916357">DOI: 10.5281/zenodo.21916357</a></footer>
+</main>
+<script>
+const buttons=document.querySelectorAll('.lang-btn'),panels=document.querySelectorAll('.language-panel'),supported=['en','tr','es'];
+function setLanguage(lang){if(!supported.includes(lang))lang='en';panels.forEach(p=>p.classList.remove('active'));buttons.forEach(b=>b.classList.remove('active'));document.getElementById('lang-'+lang)?.classList.add('active');document.querySelector('[data-lang="'+lang+'"]')?.classList.add('active');document.documentElement.lang=lang;localStorage.setItem('graphtraffic-language',lang)}
+buttons.forEach(b=>b.addEventListener('click',()=>setLanguage(b.dataset.lang)));const saved=localStorage.getItem('graphtraffic-language');if(saved&&supported.includes(saved))setLanguage(saved);else{const l=(navigator.language||'en').toLowerCase();setLanguage(l.startsWith('tr')?'tr':l.startsWith('es')?'es':'en')}
+</script>
 </body>
 </html>
