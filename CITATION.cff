@@ -1,15 +1,24 @@
 cff-version: 1.2.0
 title: "İstanbul GraphTraffic AI"
-message: "If you use this software or research pipeline, please cite it."
+message: "If you use this software or research pipeline, please cite the specific released version."
 type: software
+
 authors:
   - family-names: Kowsari
     given-names: Faramarz
     orcid: "https://orcid.org/0000-0003-1692-0453"
+
 repository-code: "https://github.com/FaramarzKowsari/istanbul-graphtraffic-ai"
+repository-artifact: "https://doi.org/10.5281/zenodo.21916357"
 url: "https://faramarzkowsari.github.io/istanbul-graphtraffic-ai/"
+
 version: 0.1.0
-date-released: 2026-08-12
+date-released: 2026-08-13
+
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.21916357
+
 keywords:
   - graph neural networks
   - traffic forecasting
@@ -17,4 +26,7 @@ keywords:
   - spatiotemporal learning
   - graph transformer
   - uncertainty quantification
+  - urban artificial intelligence
+  - intelligent transportation systems
+
 license: MIT
