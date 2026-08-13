@@ -9,9 +9,14 @@ on:
         default: "2025-01"
         type: string
       sensors:
-        description: "Number of high-coverage geohash nodes"
+        description: "Number of geographically diverse high-coverage geohash nodes"
         required: true
         default: "48"
+        type: string
+      min_train_coverage:
+        description: "Minimum training-period hourly coverage (0-1)"
+        required: true
+        default: "0.98"
         type: string
       epochs:
         description: "Maximum epochs for each neural model"
@@ -46,13 +51,14 @@ jobs:
       - name: Run unit tests
         run: pytest -q
 
-      - name: Run real IBB pilot benchmark
+      - name: Run geographically diverse real IBB pilot benchmark
         env:
           PYTHONUNBUFFERED: "1"
         run: |
-          python scripts/run_real_ibb_pilot.py \
+          python scripts/run_real_ibb_geographic_pilot.py \
             --period "${{ inputs.period }}" \
             --sensors "${{ inputs.sensors }}" \
+            --min-train-coverage "${{ inputs.min_train_coverage }}" \
             --epochs "${{ inputs.epochs }}"
 
       - name: Show pilot summary
@@ -66,7 +72,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: ibb-real-pilot-${{ inputs.period }}-${{ inputs.sensors }}nodes
+          name: ibb-real-pilot-${{ inputs.period }}-${{ inputs.sensors }}nodes-geographic-fps
           if-no-files-found: warn
           retention-days: 30
           path: |

@@ -1,0 +1,62 @@
+IBB GEOGRAPHIC PILOT V2 OVERLAY
+================================
+
+Repository:
+C:\Faramarz\GitHub\15-traffic\istanbul-graphtraffic-ai
+
+PURPOSE
+-------
+Replace the first coverage-ranked 48-node pilot with a second exploratory pilot whose
+nodes are selected using TRAINING-ONLY geographic farthest-point sampling.
+
+WHAT CHANGES
+------------
+- Adds deterministic geographic farthest-point sampling.
+- Requires >= 98% training-period hourly coverage by default.
+- Uses training-period coordinates only.
+- Never uses speed/volume to choose nodes.
+- Adds spatial diagnostics and a selected-node geography plot.
+- Keeps the same models, horizons, splits, seed discipline, and benchmark metrics.
+
+INSTALL
+-------
+1. Extract this ZIP.
+2. Copy all folders/files onto the ROOT of the repository.
+3. Choose Replace when Windows asks about existing files.
+4. Do NOT delete any other repository files or docs/assets.
+
+COMMIT
+------
+Commit message:
+Improve real IBB pilot with geographic node sampling
+
+Then Push origin.
+
+RUN
+---
+GitHub -> Actions -> Real IBB Pilot Benchmark -> Run workflow
+
+Use:
+period: 2025-01
+sensors: 48
+min_train_coverage: 0.98
+epochs: 30
+
+EXPECTED ARTIFACT
+-----------------
+ibb-real-pilot-2025-01-48nodes-geographic-fps
+
+IMPORTANT OUTPUTS
+-----------------
+reports/pilot/selection_diagnostics.json
+reports/pilot/selected_nodes.csv
+reports/pilot/selected_nodes_geography.png
+reports/pilot/benchmark_comparison.csv
+reports/pilot/improvement_vs_persistence.csv
+reports/pilot/PILOT_SUMMARY.md
+
+SCIENTIFIC STATUS
+-----------------
+This remains an exploratory pilot. It is designed to test whether the model ordering from
+pilot #1 persists after correcting the geographic concentration of the sampled nodes.
+It is not yet the final preregistered Istanbul-wide confirmatory benchmark.
