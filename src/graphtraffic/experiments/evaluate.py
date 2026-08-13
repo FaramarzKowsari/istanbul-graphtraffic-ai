@@ -35,6 +35,9 @@ def run_evaluation(cfg: dict):
     mcfg=cfg["model"]
     model=build_model(mcfg["name"],n_nodes=len(bundle.sensors),n_features=len(cfg["data"]["features"]),history=cfg["data"]["history"],horizons=len(cfg["data"]["horizons"]),hidden_dim=mcfg.get("hidden_dim",64),heads=mcfg.get("heads",4),dropout=mcfg.get("dropout",0.1),quantiles=mcfg.get("quantiles",[0.1,0.5,0.9])); model.load_state_dict(ckpt["model_state"])
     y,p=_predict(model,loader,A)
+    target_transform = ckpt.get("target_transform")
+    if target_transform and target_transform.get("name") == "zscore_train":
+        p = p * float(target_transform["std"]) + float(target_transform["mean"])
     if p.ndim==4:
         qs=list(mcfg.get("quantiles",[0.1,0.5,0.9])); mid=int(np.argmin(np.abs(np.asarray(qs)-0.5))); point=p[...,mid]
     else: qs=None; point=p
@@ -46,9 +49,9 @@ def run_evaluation(cfg: dict):
         result["horizons"][str(h)]=row
     failures={}
     for frac in (0.1,0.2,0.3):
-        fy,fp=_predict(model,loader,A,frac,False); fpoint=fp[...,mid] if fp.ndim==4 else fp
+        fy,fp=_predict(model,loader,A,frac,False); fp = fp * float(target_transform["std"]) + float(target_transform["mean"]) if target_transform and target_transform.get("name") == "zscore_train" else fp; fpoint=fp[...,mid] if fp.ndim==4 else fp
         failures[str(frac)]={"random_mae":mae(fy,fpoint)}
-        fy,fp=_predict(model,loader,A,frac,True); fpoint=fp[...,mid] if fp.ndim==4 else fp
+        fy,fp=_predict(model,loader,A,frac,True); fp = fp * float(target_transform["std"]) + float(target_transform["mean"]) if target_transform and target_transform.get("name") == "zscore_train" else fp; fpoint=fp[...,mid] if fp.ndim==4 else fp
         failures[str(frac)]["structured_mae"]=mae(fy,fpoint)
     result["sensor_failure"]=failures
     save_json(result,out/"metrics.json")

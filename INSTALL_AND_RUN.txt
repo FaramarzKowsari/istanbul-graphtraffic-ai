@@ -1,0 +1,36 @@
+IBB REAL-DATA PILOT OVERLAY
+===========================
+
+Destination repository:
+C:\Faramarz\GitHub\15-traffic\istanbul-graphtraffic-ai
+
+1. Extract this ZIP.
+2. Copy all included folders/files onto the repository root.
+3. Choose Replace when Windows asks about existing files.
+4. Do NOT delete docs/assets or any other existing folders.
+5. In GitHub Desktop commit:
+   Add real IBB traffic pilot benchmark
+6. Push origin.
+7. On GitHub web:
+   Actions -> Real IBB Pilot Benchmark -> Run workflow
+8. First run settings:
+   period  = 2025-01
+   sensors = 48
+   epochs  = 30
+9. When the run finishes, open the workflow run and download the artifact:
+   ibb-real-pilot-2025-01-48nodes
+
+The artifact will contain:
+- provenance.json
+- schema.json
+- data_audit.json
+- selected_nodes.csv
+- benchmark_comparison.csv
+- improvement_vs_persistence.csv
+- PILOT_SUMMARY.md
+- mae_by_horizon.png
+- per-model metrics and training histories
+- the selected processed pilot CSV
+
+Important:
+This is an exploratory real-data benchmark, not yet the final confirmatory publication benchmark.

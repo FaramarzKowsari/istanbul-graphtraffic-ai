@@ -21,6 +21,13 @@ def run_training(cfg: dict):
     features = cfg["data"]["features"]
     bundle = frame_to_tensor(df, features, cfg["data"]["target"])
     tr_end, va_end = chronological_boundaries(len(bundle.timestamps), cfg["data"]["train_fraction"], cfg["data"]["val_fraction"])
+    target_transform = None
+    if cfg["data"].get("target_normalization") == "zscore_train":
+        train_target = bundle.target[:tr_end]
+        mu = float(train_target.mean())
+        sigma = float(train_target.std()) or 1.0
+        bundle.target = ((bundle.target - mu) / sigma).astype(np.float32)
+        target_transform = {"name": "zscore_train", "mean": mu, "std": sigma}
     ds_train = TrafficWindowDataset(bundle, cfg["data"]["history"], cfg["data"]["horizons"], 0, tr_end)
     ds_val = TrafficWindowDataset(bundle, cfg["data"]["history"], cfg["data"]["horizons"], tr_end, va_end)
     if not len(ds_train) or not len(ds_val):
@@ -58,6 +65,6 @@ def run_training(cfg: dict):
             if patience>=int(cfg["training"].get("patience",10)): break
     if best_state is not None: model.load_state_dict(best_state)
     out=Path(cfg["output"]["dir"]); out.mkdir(parents=True,exist_ok=True)
-    torch.save({"model_state":model.state_dict(),"config":cfg,"sensors":bundle.sensors,"features":features}, out/"model.pt")
+    torch.save({"model_state":model.state_dict(),"config":cfg,"sensors":bundle.sensors,"features":features,"target_transform":target_transform}, out/"model.pt")
     save_json(hist,out/"training_history.json")
     return out/"model.pt"

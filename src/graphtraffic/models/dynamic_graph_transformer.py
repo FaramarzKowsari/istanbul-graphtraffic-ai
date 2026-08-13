@@ -61,4 +61,6 @@ class DynamicGraphTransformer(nn.Module):
         h = self.norm1(h + attended)
         h = self.norm2(h + self.ff(h))
         y = self.out(h).reshape(b,n,self.horizons,len(self.quantiles))
+        # Enforce non-crossing quantiles while preserving differentiability almost everywhere.
+        y = torch.sort(y, dim=-1).values
         return y.permute(0,2,1,3)
