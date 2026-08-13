@@ -1,0 +1,35 @@
+IBB GRAPH ABLATION V3 OVERLAY
+=============================
+
+Repository:
+C:\Faramarz\GitHub\15-traffic\istanbul-graphtraffic-ai
+
+1. Extract this ZIP.
+2. Copy all included folders/files onto the repository ROOT.
+3. Do NOT delete existing files or docs/assets.
+4. Commit:
+   Add controlled real IBB graph ablation
+5. Push origin.
+
+Then on GitHub:
+Actions -> Real IBB Graph Ablation -> Run workflow
+
+Use:
+period: 2025-01
+sensors: 48
+min_train_coverage: 0.98
+epochs: 30
+
+Expected artifact:
+ibb-graph-ablation-2025-01-48nodes
+
+Key outputs:
+reports/pilot/graph_ablation/graph_ablation_comparison.csv
+reports/pilot/graph_ablation/static_graph_incremental_value.csv
+reports/pilot/graph_ablation/GRAPH_ABLATION_SUMMARY.md
+reports/pilot/graph_ablation/graph_ablation_mae.png
+
+Scientific question:
+Does the current geographic kNN graph add incremental predictive value when everything else is held fixed?
+
+Workflow actions use Node.js 24-compatible major versions to avoid the Node.js 20 deprecation warning.
