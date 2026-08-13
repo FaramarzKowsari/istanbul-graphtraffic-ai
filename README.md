@@ -13,9 +13,9 @@
   <a href="https://github.com/FaramarzKowsari/istanbul-graphtraffic-ai/releases/tag/v0.1.0">
     <img alt="Release" src="https://img.shields.io/badge/release-v0.1.0-blue">
   </a>
-  <a href="https://doi.org/10.5281/zenodo.21916357">
-    <img alt="DOI" src="https://zenodo.org/badge/1332470369.svg">
-  </a>
+ <a href="https://doi.org/10.5281/zenodo.21916357">
+  <img alt="DOI" src="https://zenodo.org/badge/DOI/10.5281/zenodo.21916357.svg">
+</a>
   <a href="LICENSE">
     <img alt="License" src="https://img.shields.io/badge/license-MIT-green">
   </a>
