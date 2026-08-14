@@ -1,0 +1,83 @@
+name: Real IBB Road Graph Ablation
+
+on:
+  workflow_dispatch:
+    inputs:
+      period:
+        description: "IBB monthly resource period (YYYY-MM)"
+        required: true
+        default: "2025-01"
+        type: string
+      sensors:
+        description: "Geographically diverse IBB geohash nodes"
+        required: true
+        default: "48"
+        type: string
+      min_train_coverage:
+        description: "Minimum TRAIN-only hourly coverage"
+        required: true
+        default: "0.98"
+        type: string
+      epochs:
+        description: "Maximum epochs per neural condition"
+        required: true
+        default: "30"
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  road-graph-ablation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install project
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install -e .
+
+      - name: Run unit tests
+        run: pytest -q
+
+      - name: Run road-graph ablation
+        env:
+          PYTHONUNBUFFERED: "1"
+        run: |
+          python scripts/run_real_ibb_road_graph_ablation.py \
+            --period "${{ inputs.period }}" \
+            --sensors "${{ inputs.sensors }}" \
+            --min-train-coverage "${{ inputs.min_train_coverage }}" \
+            --epochs "${{ inputs.epochs }}"
+
+      - name: Show road-graph summary
+        if: always()
+        run: |
+          if [ -f reports/pilot/road_graph_ablation/ROAD_GRAPH_SUMMARY.md ]; then
+            cat reports/pilot/road_graph_ablation/ROAD_GRAPH_SUMMARY.md
+          fi
+
+      - name: Upload road-graph artifacts
+        if: always()
+        uses: actions/upload-artifact@v6
+        with:
+          name: ibb-road-graph-ablation-${{ inputs.period }}-${{ inputs.sensors }}nodes
+          if-no-files-found: warn
+          retention-days: 30
+          path: |
+            reports/pilot/**
+            configs/road_graph_ablation_generated/**
+            artifacts/road_graph_ablation/*/metrics.json
+            artifacts/road_graph_ablation/*/training_history.json
+            data/processed/traffic_real_pilot_*_geographic_fps.csv

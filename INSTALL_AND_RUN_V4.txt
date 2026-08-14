@@ -1,0 +1,27 @@
+IBB ROAD GRAPH PILOT #4
+=======================
+
+Repository:
+C:\Faramarz\GitHub\15-traffic\istanbul-graphtraffic-ai
+
+1. Extract this ZIP.
+2. Copy all folders/files onto the repository ROOT.
+3. Do not delete existing files or docs/assets.
+4. Commit:
+   Add OSM-derived road graph ablation
+5. Push origin.
+
+Then:
+GitHub -> Actions -> Real IBB Road Graph Ablation -> Run workflow
+
+Use:
+period: 2025-01
+sensors: 48
+min_train_coverage: 0.98
+epochs: 30
+
+Expected artifact:
+ibb-road-graph-ablation-2025-01-48nodes
+
+The workflow makes one modest OSRM Table API request for the 48 selected coordinates,
+then freezes the full response inside the artifact for this exploratory run.
