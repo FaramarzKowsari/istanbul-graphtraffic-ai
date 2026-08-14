@@ -1,0 +1,28 @@
+PILOT #5 — LOCAL-DENSITY GRAPH BENCHMARK
+==========================================
+
+Repository:
+C:\Faramarz\GitHub\15-traffic\istanbul-graphtraffic-ai
+
+1. Extract this ZIP.
+2. Copy all included folders/files onto the repository ROOT.
+3. Do not delete existing files or docs/assets.
+4. Commit:
+   Add local-density real IBB graph pilot
+5. Push origin.
+
+Then:
+GitHub -> Actions -> Real IBB Local-Density Graph Pilot -> Run workflow
+
+Use:
+period:             2025-01
+sensors:            64
+cluster_size:       4
+min_train_coverage: 0.98
+epochs:             30
+
+Expected artifact:
+ibb-local-density-2025-01-64nodes
+
+Key scientific output:
+reports/pilot/local_density_pilot/graph_comparison/road_graph_incremental_value.csv
