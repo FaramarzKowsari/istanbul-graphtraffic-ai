@@ -1,0 +1,87 @@
+name: Real IBB Residual Graph Signal Audit
+
+on:
+  workflow_dispatch:
+    inputs:
+      period:
+        description: "IBB monthly resource period"
+        required: true
+        default: "2025-01"
+        type: string
+      sensors:
+        description: "Local-density nodes"
+        required: true
+        default: "64"
+        type: string
+      cluster_size:
+        description: "Nodes per citywide local cluster"
+        required: true
+        default: "4"
+        type: string
+      min_train_coverage:
+        description: "Minimum TRAIN-only hourly coverage"
+        required: true
+        default: "0.98"
+        type: string
+      permutations:
+        description: "Node-label permutations for exploratory graph-signal test"
+        required: true
+        default: "2000"
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  graph-signal-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install project
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install -e .
+
+      - name: Run unit tests
+        run: pytest -q
+
+      - name: Run held-out residual graph-signal audit
+        env:
+          PYTHONUNBUFFERED: "1"
+        run: |
+          python scripts/run_real_ibb_graph_signal_audit.py \
+            --period "${{ inputs.period }}" \
+            --sensors "${{ inputs.sensors }}" \
+            --cluster-size "${{ inputs.cluster_size }}" \
+            --min-train-coverage "${{ inputs.min_train_coverage }}" \
+            --permutations "${{ inputs.permutations }}"
+
+      - name: Show audit summary
+        if: always()
+        run: |
+          if [ -f reports/pilot/graph_signal_audit/GRAPH_SIGNAL_AUDIT.md ]; then
+            cat reports/pilot/graph_signal_audit/GRAPH_SIGNAL_AUDIT.md
+          fi
+
+      - name: Upload audit artifacts
+        if: always()
+        uses: actions/upload-artifact@v6
+        with:
+          name: ibb-graph-signal-audit-${{ inputs.period }}-${{ inputs.sensors }}nodes
+          if-no-files-found: warn
+          retention-days: 30
+          path: |
+            reports/pilot/graph_signal_audit/**
+            reports/pilot/local_density_pilot/selected_nodes.csv
+            data/processed/traffic_real_pilot_*_local_density.csv

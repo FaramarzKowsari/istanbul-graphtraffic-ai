@@ -1,0 +1,24 @@
+PILOT #6 — RESIDUAL GRAPH SIGNAL AUDIT
+=========================================
+
+Repository:
+C:\Faramarz\GitHub\15-traffic\istanbul-graphtraffic-ai
+
+1. Extract this ZIP.
+2. Copy all included folders/files onto the repository ROOT.
+3. Commit:
+   Add held-out residual graph signal audit
+4. Push origin.
+
+Then:
+GitHub -> Actions -> Real IBB Residual Graph Signal Audit -> Run workflow
+
+Use:
+period:             2025-01
+sensors:            64
+cluster_size:       4
+min_train_coverage: 0.98
+permutations:       2000
+
+Expected artifact:
+ibb-graph-signal-audit-2025-01-64nodes
