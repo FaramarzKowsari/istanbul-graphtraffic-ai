@@ -1,0 +1,114 @@
+{
+  "primary_H1": {
+    "n_days": 10,
+    "statistic": 27.0,
+    "p_value": 0.5,
+    "effect": {
+      "mean_difference": -0.01811897362823851,
+      "ci95_low": -0.17604872661608248,
+      "ci95_high": 0.11200233399868002,
+      "replicates": 10000,
+      "seed": 20260814
+    },
+    "mean_model_mae": 3.6804342288661887,
+    "mean_reference_mae": 3.698553202494427,
+    "relative_mae_difference_pct": -0.4898935512410176,
+    "relative_effect_definition": "100 * (mean_model_mae - mean_reference_mae) / mean_reference_mae; negative values favor the registered graph model"
+  },
+  "secondary": {
+    "H2": {
+      "n_days": 10,
+      "raw_p": 0.9033203125,
+      "effect": {
+        "mean_difference": 0.020685608629827,
+        "ci95_low": -0.028053591538358714,
+        "ci95_high": 0.0699715419251605,
+        "replicates": 10000,
+        "seed": 20260814
+      },
+      "holm_p": 1.0,
+      "mean_model_mae": 3.6804342288661887,
+      "mean_reference_mae": 3.6597486202363614,
+      "relative_mae_difference_pct": 0.5652193846169496,
+      "relative_effect_definition": "100 * (mean_model_mae - mean_reference_mae) / mean_reference_mae; negative values favor the registered graph model"
+    },
+    "H4_2h": {
+      "n_days": 10,
+      "raw_p": 0.75390625,
+      "effect": {
+        "mean_difference": 0.03274633404202203,
+        "ci95_low": -0.1085195449883476,
+        "ci95_high": 0.15752364348883593,
+        "replicates": 10000,
+        "seed": 20260814
+      },
+      "holm_p": 1.0,
+      "mean_model_mae": 3.875020103008427,
+      "mean_reference_mae": 3.842273768966405,
+      "relative_mae_difference_pct": 0.8522644665903375,
+      "relative_effect_definition": "100 * (mean_model_mae - mean_reference_mae) / mean_reference_mae; negative values favor the registered graph model"
+    },
+    "H4_3h": {
+      "n_days": 10,
+      "raw_p": 0.34765625,
+      "effect": {
+        "mean_difference": -0.03895879355687937,
+        "ci95_low": -0.14947654804705657,
+        "ci95_high": 0.03755014883147374,
+        "replicates": 10000,
+        "seed": 20260814
+      },
+      "holm_p": 1.0,
+      "mean_model_mae": 3.940580652119621,
+      "mean_reference_mae": 3.979539445676501,
+      "relative_mae_difference_pct": -0.9789774442167144,
+      "relative_effect_definition": "100 * (mean_model_mae - mean_reference_mae) / mean_reference_mae; negative values favor the registered graph model"
+    },
+    "H4_6h": {
+      "n_days": 10,
+      "raw_p": 0.9755859375,
+      "effect": {
+        "mean_difference": 0.13923113542313933,
+        "ci95_low": -0.10864211549793454,
+        "ci95_high": 0.35175157653161404,
+        "replicates": 10000,
+        "seed": 20260814
+      },
+      "holm_p": 1.0,
+      "mean_model_mae": 4.245338213285387,
+      "mean_reference_mae": 4.106107077862248,
+      "relative_mae_difference_pct": 3.390830603853287,
+      "relative_effect_definition": "100 * (mean_model_mae - mean_reference_mae) / mean_reference_mae; negative values favor the registered graph model"
+    },
+    "H3": {
+      "n_days": 10,
+      "raw_p": 0.013671875,
+      "mean_d1_minus_d6": -0.15735010905137786,
+      "holm_p": 0.068359375,
+      "effect": {
+        "mean_difference": -0.15735010905137786,
+        "ci95_low": -0.2538551834954261,
+        "ci95_high": -0.03826029910653528,
+        "replicates": 10000,
+        "seed": 20260814
+      },
+      "relative_mae_difference_1h_pct": -0.4898935512410176,
+      "relative_mae_difference_6h_pct": 3.390830603853287,
+      "relative_horizon_contrast_pct_points": -3.880724155094305,
+      "relative_horizon_contrast_definition": "relative MAE difference at +1h minus relative MAE difference at +6h; negative values indicate a more favorable graph effect at +1h"
+    }
+  },
+  "used_months": [
+    "2024-05",
+    "2024-11"
+  ],
+  "excluded_exploratory_months": [
+    "2025-01"
+  ],
+  "registered_effect_reporting": {
+    "relative_mae_definition": "100 * (mean_model_mae - mean_reference_mae) / mean_reference_mae",
+    "hierarchical_bootstrap_replicates": 10000,
+    "hierarchical_bootstrap_seed": 20260814,
+    "hierarchical_bootstrap_structure": "month -> target day within sampled month"
+  }
+}

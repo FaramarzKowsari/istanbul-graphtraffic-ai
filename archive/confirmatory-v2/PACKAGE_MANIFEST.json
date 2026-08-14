@@ -1,0 +1,14 @@
+{
+  "package": "istanbul_graphtraffic_confirmatory_v2_final_results",
+  "source_workflow_run_id": 31837216931,
+  "source_commit": "416332744f12d759942661c5d90d918f5fc12f23",
+  "source_artifact_id": 9233395344,
+  "source_artifact_sha256": "e98e7d274bbdd4c75fcc2ef77af26cebb2d8dc4cb4fa4164fcaef1cda1783671",
+  "workflow_conclusion": "success",
+  "osf_registration_doi": "10.17605/OSF.IO/FM5R7",
+  "confirmatory_months_used": [
+    "2024-05",
+    "2024-11"
+  ],
+  "curated_file_count_excluding_manifest_and_hashes": 36
+}

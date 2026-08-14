@@ -1,0 +1,14 @@
+{
+  "season": "autumn",
+  "period": "2024-11",
+  "source_url": "https://data.ibb.gov.tr/dataset/3ee6d744-5da2-40c8-9cd6-0e3e41f1928f/resource/bedd5ab2-9a00-4966-9921-9672d4478a51/download/traffic_density_202411.csv",
+  "resource_name": "Kasım 2024 Trafik Yoğunluk Verisi",
+  "resource_id": "bedd5ab2-9a00-4966-9921-9672d4478a51",
+  "raw_file": "traffic_density_202411.csv",
+  "raw_file_exists": true,
+  "raw_size_bytes": 137202924,
+  "raw_sha256": "20f11179a5e094d2213c844af1d5d32e1dc7617212edf02f2da49734a6d66669",
+  "retrieval_started_at_utc": "2026-08-14T20:24:06.560962+00:00",
+  "retrieved_at_utc": "2026-08-14T20:24:26.228121+00:00",
+  "download_observed_in_this_workflow": true
+}

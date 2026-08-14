@@ -1,0 +1,54 @@
+{
+  "period": "2024-11",
+  "raw_rows": 1710138,
+  "rows_in_requested_month": 1710138,
+  "canonical_rows_selected": 45877,
+  "raw_unique_geohashes_training": 2456,
+  "eligible_nodes_after_cleaning": 2103,
+  "selected_nodes": 64,
+  "month_start": "2024-11-01 00:00:00",
+  "month_end_exclusive": "2024-12-01 00:00:00",
+  "training_selection_cutoff": "2024-11-21 23:00:00",
+  "selection_rule": "training-only coverage eligibility; deterministic geographic FPS anchors; nearest unused local neighbors added round-robin",
+  "min_train_coverage": 0.98,
+  "cluster_size": 4,
+  "selected_geographic_spread": {
+    "count": 64,
+    "latitude_min": 40.7675170898438,
+    "latitude_max": 41.3442993164063,
+    "longitude_min": 27.9656982421875,
+    "longitude_max": 29.4378662109375,
+    "latitude_span_deg": 0.5767822265625,
+    "longitude_span_deg": 1.47216796875,
+    "centroid_latitude": 41.08577728271489,
+    "centroid_longitude": 28.79241943359375,
+    "nearest_neighbor_km_min": 0.6108128186653576,
+    "nearest_neighbor_km_median": 0.610812818666065,
+    "nearest_neighbor_km_mean": 0.738291229979294
+  },
+  "local_neighbor_distance_km": {
+    "min": 0.6108128186653576,
+    "median": 0.9212285450273536,
+    "mean": 0.9719853681805034,
+    "max": 2.2092488640117915
+  },
+  "speed_input_scaler_fit_on_training_only": {
+    "mean": 66.45179802264292,
+    "std": 24.67032117165349
+  },
+  "target": "AVERAGE_SPEED mapped to speed (km/h as supplied by source)",
+  "features": [
+    "speed_z",
+    "hour_sin",
+    "hour_cos",
+    "dow_sin",
+    "dow_cos",
+    "is_weekend"
+  ],
+  "graph": {
+    "type": "geographic kNN",
+    "k": 6,
+    "sigma_km": 5.0
+  },
+  "note": "Exploratory Pilot #5 changes node sampling density while keeping the same January 2025 source period and core model/evaluation protocol."
+}

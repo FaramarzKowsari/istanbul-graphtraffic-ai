@@ -1,0 +1,14 @@
+{
+  "season": "spring",
+  "period": "2024-05",
+  "source_url": "https://data.ibb.gov.tr/dataset/3ee6d744-5da2-40c8-9cd6-0e3e41f1928f/resource/674604c8-8d08-42ff-a0b3-e2bde9f39455/download/traffic_density_202405.csv",
+  "resource_name": "Mayıs 2024 Trafik Yoğunluk Verisi",
+  "resource_id": "674604c8-8d08-42ff-a0b3-e2bde9f39455",
+  "raw_file": "traffic_density_202405.csv",
+  "raw_file_exists": true,
+  "raw_size_bytes": 123379069,
+  "raw_sha256": "a7c63c9ed04bd0227437768919a03570569ca8f3f437611ebc33ee0d413bcde3",
+  "retrieval_started_at_utc": "2026-08-14T20:19:23.631110+00:00",
+  "retrieved_at_utc": "2026-08-14T20:19:44.883650+00:00",
+  "download_observed_in_this_workflow": true
+}

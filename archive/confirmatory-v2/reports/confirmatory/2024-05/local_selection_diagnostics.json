@@ -1,0 +1,60 @@
+{
+  "selection_strategy": "citywide_anchors_plus_local_neighbors",
+  "algorithm": "training-only coverage eligibility; deterministic geographic FPS anchors; nearest unused local neighbors added round-robin",
+  "min_train_coverage": 0.98,
+  "cluster_size": 4,
+  "anchors": 16,
+  "local_neighbors": 48,
+  "eligible_nodes_after_cleaning": 2116,
+  "selected_nodes": 64,
+  "uses_speed_or_volume_for_selection": false,
+  "coordinates_source": "training-period median latitude/longitude only",
+  "eligible_geographic_spread": {
+    "count": 2116,
+    "latitude_min": 40.7675170898438,
+    "latitude_max": 41.3442993164063,
+    "longitude_min": 27.9656982421875,
+    "longitude_max": 29.4378662109375,
+    "latitude_span_deg": 0.5767822265625,
+    "longitude_span_deg": 1.47216796875,
+    "centroid_latitude": 41.054838645661086,
+    "centroid_longitude": 28.882267452593336,
+    "nearest_neighbor_km_min": 0.6108128186653576,
+    "nearest_neighbor_km_median": 0.6108128186653576,
+    "nearest_neighbor_km_mean": 0.6403757564035572
+  },
+  "selected_geographic_spread": {
+    "count": 64,
+    "latitude_min": 40.7675170898438,
+    "latitude_max": 41.3442993164063,
+    "longitude_min": 27.9656982421875,
+    "longitude_max": 29.4268798828125,
+    "latitude_span_deg": 0.5767822265625,
+    "longitude_span_deg": 1.461181640625,
+    "centroid_latitude": 41.08560562133794,
+    "centroid_longitude": 28.792076110839844,
+    "nearest_neighbor_km_min": 0.6108128186653576,
+    "nearest_neighbor_km_median": 0.610812818666065,
+    "nearest_neighbor_km_mean": 0.7201717014215474
+  },
+  "anchor_geographic_spread": {
+    "count": 16,
+    "latitude_min": 40.7675170898438,
+    "latitude_max": 41.3442993164063,
+    "longitude_min": 27.9656982421875,
+    "longitude_max": 29.4268798828125,
+    "latitude_span_deg": 0.5767822265625,
+    "longitude_span_deg": 1.461181640625,
+    "centroid_latitude": 41.08577728271489,
+    "centroid_longitude": 28.793106079101562,
+    "nearest_neighbor_km_min": 15.636964968380257,
+    "nearest_neighbor_km_median": 16.926492507458992,
+    "nearest_neighbor_km_mean": 18.342081709334558
+  },
+  "local_neighbor_distance_km": {
+    "min": 0.6108128186653576,
+    "median": 0.9211900824823832,
+    "mean": 0.9351028339495292,
+    "max": 2.0491922984687494
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "period": "2024-08",
+  "status": "insufficient_eligible_nodes",
+  "eligible_raw_candidates": 0,
+  "requested_nodes": 64,
+  "min_train_coverage": 0.98,
+  "reason": "Only 0 raw candidates meet training coverage; requested 64",
+  "protocol_interpretation": "Month excluded under the preregistered training-only coverage rule; no model outcome was used to make this decision."
+}

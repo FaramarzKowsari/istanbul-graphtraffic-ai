@@ -1,0 +1,26 @@
+{
+  "winter": {
+    "period": "2024-02",
+    "url": "https://data.ibb.gov.tr/dataset/3ee6d744-5da2-40c8-9cd6-0e3e41f1928f/resource/601cd734-9a62-44e0-89e5-bbfc2161d389/download/traffic_density_202402.csv",
+    "name": "Şubat 2024 Trafik Yoğunluk Verisi",
+    "resource_id": "601cd734-9a62-44e0-89e5-bbfc2161d389"
+  },
+  "spring": {
+    "period": "2024-05",
+    "url": "https://data.ibb.gov.tr/dataset/3ee6d744-5da2-40c8-9cd6-0e3e41f1928f/resource/674604c8-8d08-42ff-a0b3-e2bde9f39455/download/traffic_density_202405.csv",
+    "name": "Mayıs 2024 Trafik Yoğunluk Verisi",
+    "resource_id": "674604c8-8d08-42ff-a0b3-e2bde9f39455"
+  },
+  "summer": {
+    "period": "2024-08",
+    "url": "https://data.ibb.gov.tr/dataset/3ee6d744-5da2-40c8-9cd6-0e3e41f1928f/resource/168467fe-0495-4cdf-a93a-7c1e91179457/download/traffic_density_202408.csv",
+    "name": "Ağustos 2024 Trafik Yoğunluk Verisi",
+    "resource_id": "168467fe-0495-4cdf-a93a-7c1e91179457"
+  },
+  "autumn": {
+    "period": "2024-11",
+    "url": "https://data.ibb.gov.tr/dataset/3ee6d744-5da2-40c8-9cd6-0e3e41f1928f/resource/bedd5ab2-9a00-4966-9921-9672d4478a51/download/traffic_density_202411.csv",
+    "name": "Kasım 2024 Trafik Yoğunluk Verisi",
+    "resource_id": "bedd5ab2-9a00-4966-9921-9672d4478a51"
+  }
+}
