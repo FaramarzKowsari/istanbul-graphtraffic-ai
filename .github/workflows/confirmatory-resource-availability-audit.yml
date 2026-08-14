@@ -1,0 +1,89 @@
+name: Confirmatory Resource Availability Audit
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout frozen protocol
+        uses: actions/checkout@v6
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+
+      - name: Install audit dependency
+        run: |
+          python -m pip install --upgrade pip
+          pip install "PyYAML>=6.0"
+
+      - name: Validate audit script
+        run: |
+          python -m py_compile \
+            scripts/audit_confirmatory_resource_availability.py
+
+      - name: Verify frozen OSF registration metadata
+        run: |
+          python - <<'PY'
+          import yaml
+
+          p = yaml.safe_load(
+              open(
+                  "configs/confirmatory_plan.yaml",
+                  encoding="utf-8",
+              )
+          )
+          s = p["study"]
+
+          for k in (
+              "osf_registration_doi",
+              "osf_registration_url",
+              "registration_timestamp_utc",
+          ):
+              v = str(s.get(k, ""))
+              assert v and "TO_BE_FILLED" not in v, (
+                  f"{k} must contain frozen OSF metadata"
+              )
+
+          print(
+              "Frozen OSF registration:",
+              s["osf_registration_doi"],
+          )
+          PY
+
+      - name: Run metadata-only resource availability audit
+        env:
+          PYTHONUNBUFFERED: "1"
+        run: |
+          python \
+            scripts/audit_confirmatory_resource_availability.py \
+            --plan configs/confirmatory_plan.yaml
+
+      - name: Show audit report
+        if: always()
+        run: |
+          if [ -f \
+            reports/confirmatory_resource_audit/RESOURCE_AVAILABILITY_AUDIT.md \
+          ]; then
+            cat \
+              reports/confirmatory_resource_audit/RESOURCE_AVAILABILITY_AUDIT.md
+          fi
+
+      - name: Upload audit archive
+        if: always()
+        uses: actions/upload-artifact@v6
+        with:
+          name: confirmatory-resource-availability-audit
+          if-no-files-found: error
+          retention-days: 90
+          path: |
+            reports/confirmatory_resource_audit/**
+            configs/confirmatory_plan.yaml
