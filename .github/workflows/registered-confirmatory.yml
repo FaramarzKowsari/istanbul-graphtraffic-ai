@@ -27,6 +27,12 @@ jobs:
           pip install -r requirements.txt
           pip install -e .
 
+      - name: Validate registered wrapper
+        run: |
+          python -m py_compile \
+            scripts/run_confirmatory_multimonth.py \
+            scripts/run_registered_confirmatory.py
+
       - name: Unit tests
         run: pytest -q
 
@@ -46,7 +52,7 @@ jobs:
         env:
           PYTHONUNBUFFERED: "1"
         run: |
-          python scripts/run_confirmatory_multimonth.py \
+          python scripts/run_registered_confirmatory.py \
             --plan configs/confirmatory_plan.yaml
 
       - name: Show registered result
@@ -54,6 +60,9 @@ jobs:
         run: |
           if [ -f reports/confirmatory/CONFIRMATORY_RESULTS.md ]; then
             cat reports/confirmatory/CONFIRMATORY_RESULTS.md
+          fi
+          if [ -f reports/confirmatory/REGISTERED_EFFECTS_AND_PROVENANCE.md ]; then
+            cat reports/confirmatory/REGISTERED_EFFECTS_AND_PROVENANCE.md
           fi
 
       - name: Upload confirmatory archive

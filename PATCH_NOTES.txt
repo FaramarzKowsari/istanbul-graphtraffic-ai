@@ -1,0 +1,38 @@
+CONFIRMATORY GITHUB PATCH V2
+============================
+
+Why this patch exists
+---------------------
+The OSF preregistration promises:
+1. exact raw-source URL, retrieval timestamp, and raw-file SHA-256 provenance;
+2. relative percentage MAE differences;
+3. 95% hierarchical-bootstrap uncertainty for H3 as well as registered model comparisons;
+4. the single preregistered bootstrap RNG seed.
+
+The already-frozen core benchmark is intentionally preserved.
+This patch adds a registered wrapper around it and changes the GitHub Actions workflow
+to call that wrapper.
+
+Files
+-----
+NEW:
+scripts/run_registered_confirmatory.py
+
+REPLACE:
+.github/workflows/registered-confirmatory.yml
+
+Do NOT run the confirmatory workflow yet.
+The OSF registration must be submitted first, then its DOI/URL/timestamp must be placed
+into configs/confirmatory_plan.yaml.
+
+Recommended commit message:
+Align registered benchmark outputs with OSF protocol
+
+Expected CI behavior after push:
+- normal CI / sanity workflows should stay green;
+- Registered IBB Confirmatory Benchmark remains blocked until OSF metadata is filled.
+
+Important:
+This is not a new pilot and does not change H1-H4, the months, seeds, model architectures,
+hyperparameters, or the confirmatory test. It only closes reporting/provenance gaps between
+the frozen code and the OSF text.
