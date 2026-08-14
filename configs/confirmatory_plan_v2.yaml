@@ -2,9 +2,11 @@ study:
   title: "Incremental Predictive Value of Spatial Graph Structure in Hourly Istanbul Traffic Forecasting: A Confirmatory Multi-Season Study (Protocol v2)"
   protocol_version: "2.0"
   status: "confirmatory-feasibility-revision-before-outcome-access"
-  osf_registration_doi: "TO_BE_FILLED_AFTER_OSF_V2_REGISTRATION"
-  osf_registration_url: "TO_BE_FILLED_AFTER_OSF_V2_REGISTRATION"
-  registration_timestamp_utc: "TO_BE_FILLED_AFTER_OSF_V2_REGISTRATION"
+  osf_registration_doi: "10.17605/OSF.IO/FM5R7"
+  osf_registration_url: "https://osf.io/fm5r7/"
+  registration_timestamp_utc: "2026-08-14"
+  registration_timestamp_precision: "date-only; OSF public update banner exposes the update date but not an exact UTC time"
+  osf_update_state: "public update applied"
 
 predecessor_registration:
   osf_registration_doi: "10.17605/OSF.IO/FM5R7"
