@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Registered Confirmatory v2 Results | İstanbul GraphTraffic AI</title>
+<meta name="description" content="Registered confirmatory results for Istanbul traffic forecasting with Dynamic Graph Transformer and Temporal MLP, including OSF preregistration, effect sizes, uncertainty, Holm correction and provenance.">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+<meta name="author" content="Faramarz Kowsari">
+<link rel="canonical" href="https://faramarzkowsari.github.io/istanbul-graphtraffic-ai/confirmatory-results.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Registered Confirmatory v2 Results | İstanbul GraphTraffic AI">
+<meta property="og:description" content="Preregistered confirmatory evidence, effect estimates, statistical tests and permanent provenance archive.">
+<meta property="og:image" content="https://faramarzkowsari.github.io/istanbul-graphtraffic-ai/assets/social-preview.png">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://faramarzkowsari.github.io/#faramarz-kowsari",
+      "name": "Faramarz Kowsari",
+      "url": "https://faramarzkowsari.github.io/",
+      "sameAs": [
+        "https://orcid.org/0000-0003-1692-0453",
+        "https://github.com/FaramarzKowsari"
+      ]
+    },
+    {
+      "@type": "Report",
+      "@id": "https://faramarzkowsari.github.io/istanbul-graphtraffic-ai/confirmatory-results.html#report",
+      "name": "İstanbul GraphTraffic AI — Registered Confirmatory v2 Results",
+      "headline": "Registered Confirmatory Results for Directed Road-Graph Traffic Forecasting in Istanbul",
+      "description": "Registered confirmatory results for Dynamic Graph Transformer versus Temporal MLP forecasting using public IBB traffic data.",
+      "datePublished": "2026-08-14",
+      "author": {
+        "@id": "https://faramarzkowsari.github.io/#faramarz-kowsari"
+      },
+      "url": "https://faramarzkowsari.github.io/istanbul-graphtraffic-ai/confirmatory-results.html",
+      "identifier": [
+        {
+          "@type": "PropertyValue",
+          "propertyID": "OSF Registration DOI",
+          "value": "10.17605/OSF.IO/FM5R7",
+          "url": "https://doi.org/10.17605/OSF.IO/FM5R7"
+        },
+        {
+          "@type": "PropertyValue",
+          "propertyID": "Zenodo Version DOI",
+          "value": "10.5281/zenodo.21916357",
+          "url": "https://doi.org/10.5281/zenodo.21916357"
+        }
+      ],
+      "isPartOf": {
+        "@id": "https://faramarzkowsari.github.io/istanbul-graphtraffic-ai/#research-project"
+      }
+    }
+  ]
+}
+</script>
+<link rel="stylesheet" href="assets/site.css">
+<style>
+.results-table{width:100%;border-collapse:collapse;margin:20px 0}
+.results-table th,.results-table td{border:1px solid var(--line);padding:12px;text-align:left;vertical-align:top}
+.results-table th{background:rgba(15,42,64,.95)}
+.callout{padding:20px;border:1px solid var(--line);border-radius:18px;background:rgba(13,32,49,.68);margin:20px 0}
+.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.metric{padding:20px;border:1px solid var(--line);border-radius:18px;background:linear-gradient(145deg,rgba(15,42,64,.95),rgba(10,24,36,.95))}
+.metric strong{display:block;font-size:28px;color:var(--cyan);margin:6px 0}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin:20px 0}
+.actions a{padding:10px 14px;border:1px solid var(--line);border-radius:999px;text-decoration:none;font-weight:700}
+code{overflow-wrap:anywhere}
+@media(max-width:850px){.metrics{grid-template-columns:1fr}}
+</style>
+</head>
+<body><main class="wrap">
+<section>
+<div class="eyebrow">OSF preregistered · Confirmatory Protocol v2 · Completed</div>
+<h1>Registered Confirmatory v2 Results</h1>
+<p class="seo-intro">Incremental Predictive Value of Spatial Graph Structure in Hourly Istanbul Traffic Forecasting: A Confirmatory Multi-Season Study.</p>
+<div class="actions"><a href="https://faramarzkowsari.github.io/istanbul-graphtraffic-ai/">Research home</a><a href="https://doi.org/10.17605/OSF.IO/FM5R7">OSF registration DOI</a><a href="https://github.com/FaramarzKowsari/istanbul-graphtraffic-ai/tree/main/archive/confirmatory-v2">Permanent GitHub archive</a><a href="https://github.com/FaramarzKowsari/istanbul-graphtraffic-ai/actions/runs/31837216931">Successful workflow run</a></div>
+</section>
+<section><h2>Primary registered endpoint</h2>
+<div class="metrics"><div class="metric"><span>Paired MAE difference</span><strong>−0.0181 km/h</strong><small>DGT Directed Road + Adaptive − Temporal MLP</small></div><div class="metric"><span>Relative MAE difference</span><strong>−0.490%</strong><small>Negative values favor the registered graph model.</small></div><div class="metric"><span>Primary p-value</span><strong>0.5000</strong><small>One-sided paired Wilcoxon; α = 0.05.</small></div></div>
+<div class="callout"><strong>Primary conclusion:</strong> the preregistered H1 superiority hypothesis was not statistically supported. The 95% hierarchical bootstrap CI for the paired MAE difference was <strong>[−0.1760, +0.1120] km/h</strong>, which crosses zero.</div>
+</section>
+<section><h2>Registered hypothesis family</h2>
+<table class="results-table"><thead><tr><th>Hypothesis</th><th>Comparison / effect</th><th>Raw p</th><th>Holm-adjusted p</th><th>Interpretation</th></tr></thead><tbody>
+<tr><td><strong>H1 primary</strong></td><td>+1h DGT Directed Road + Adaptive vs Temporal MLP: −0.0181 km/h; −0.490%</td><td>0.500000</td><td>Not applicable</td><td>Not supported at α = 0.05.</td></tr>
+<tr><td>H2</td><td>+1h DGT Directed Road + Adaptive vs DGT Identity + Adaptive: +0.0207 km/h</td><td>0.903320</td><td>1.000000</td><td>Not significant.</td></tr>
+<tr><td>H3</td><td>+1h minus +6h graph-benefit contrast: −0.1574 km/h; 95% CI [−0.2539, −0.0383]</td><td>0.013672</td><td>0.068359</td><td>Raw signal, but not significant after preregistered Holm correction.</td></tr>
+<tr><td>H4 +2h</td><td>DGT Directed Road + Adaptive vs Temporal MLP: +0.0327 km/h</td><td>0.753906</td><td>1.000000</td><td>Not significant.</td></tr>
+<tr><td>H4 +3h</td><td>DGT Directed Road + Adaptive vs Temporal MLP: −0.0390 km/h</td><td>0.347656</td><td>1.000000</td><td>Not significant.</td></tr>
+<tr><td>H4 +6h</td><td>DGT Directed Road + Adaptive vs Temporal MLP: +0.1392 km/h</td><td>0.975586</td><td>1.000000</td><td>Not significant.</td></tr>
+</tbody></table>
+</section>
+<section><h2>Data and preregistered feasibility rules</h2><p>The final confirmatory analysis used <strong>2024-05</strong> and <strong>2024-11</strong>. The frozen Protocol v2 feasibility process excluded <strong>2024-02</strong> and <strong>2024-08</strong> under the registered 64-node / 98% training-coverage rule. January 2025 was excluded from all confirmatory inference because it had been used in exploratory development.</p><p>The inferential unit was the target calendar day after node-level and forecast-origin aggregation and seed averaging, yielding <strong>10 paired confirmatory days</strong> in the registered hypothesis tests.</p></section>
+<section><h2>Uncertainty and multiplicity</h2><p>Effect uncertainty was estimated with a preregistered <strong>10,000-replicate hierarchical bootstrap</strong> resampling confirmatory month and then target day within month, with fixed RNG seed <code>20260814</code>. H2, H3 and the three H4 horizon-specific tests formed one secondary family and were adjusted using the <strong>Holm procedure</strong>.</p></section>
+<section><h2>Permanent evidence and provenance</h2><p>The successful registered workflow output is permanently committed to the repository rather than relying only on time-limited GitHub Actions artifacts.</p>
+<ul>
+<li><a href="https://github.com/FaramarzKowsari/istanbul-graphtraffic-ai/blob/main/archive/confirmatory-v2/reports/confirmatory/CONFIRMATORY_RESULTS.md">Registered result summary</a></li>
+<li><a href="https://github.com/FaramarzKowsari/istanbul-graphtraffic-ai/blob/main/archive/confirmatory-v2/reports/confirmatory/confirmatory_statistics.json">Machine-readable confirmatory statistics</a></li>
+<li><a href="https://github.com/FaramarzKowsari/istanbul-graphtraffic-ai/blob/main/archive/confirmatory-v2/reports/confirmatory/registered_effects.csv">Registered effects CSV</a></li>
+<li><a href="https://github.com/FaramarzKowsari/istanbul-graphtraffic-ai/blob/main/archive/confirmatory-v2/reports/confirmatory/REGISTERED_EFFECTS_AND_PROVENANCE.md">Effect and provenance audit</a></li>
+<li><a href="https://github.com/FaramarzKowsari/istanbul-graphtraffic-ai/blob/main/archive/confirmatory-v2/reports/confirmatory/raw_source_provenance_manifest.json">Raw-source provenance manifest</a></li>
+<li><a href="https://github.com/FaramarzKowsari/istanbul-graphtraffic-ai/blob/main/archive/confirmatory-v2/SHA256SUMS.txt">SHA-256 integrity manifest</a></li>
+</ul>
+</section>
+<section><h2>Research interpretation</h2><div class="callout">The confirmatory evidence does not support a claim that the registered directed-road Dynamic Graph Transformer broadly outperforms the Temporal MLP. The scientifically relevant outcome is the transparent registered result itself: small and uncertain +1h benefit, non-significant primary inference, and a secondary short-vs-long horizon pattern that did not survive the preregistered multiplicity correction.</div></section>
+<footer><strong>İstanbul GraphTraffic AI</strong><br>Faramarz Kowsari · Istanbul, Türkiye</footer>
+</main></body></html>

@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Yapay Zekâ ile İstanbul Trafik Tahmini: GNN ve ST-GNN | GraphTraffic AI</title>
-<meta name="description" content="Yapay zekâ ile İstanbul trafik tahmini: GNN, ST-GNN ve Dynamic Graph Transformer ile +1 ila +6 saatlik tahmin, belirsizlik ve sensör arızası dayanıklılığı.">
+<title>İstanbul Trafik Tahmini: GNN, ST-GNN ve Kayıtlı Sonuçlar | GraphTraffic AI</title>
+<meta name="description" content="OSF ön kayıtlı İstanbul trafik tahmini araştırması: GNN, ST-GNN ve Dynamic Graph Transformer ile tamamlanmış Confirmatory v2 sonuçları ve kalıcı arşiv.">
 <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
 <meta name="author" content="Faramarz Kowsari">
 <link rel="canonical" href="https://faramarzkowsari.github.io/istanbul-graphtraffic-ai/tr/">
@@ -14,13 +14,13 @@
 <link rel="alternate" hreflang="x-default" href="https://faramarzkowsari.github.io/istanbul-graphtraffic-ai/">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://faramarzkowsari.github.io/istanbul-graphtraffic-ai/tr/">
-<meta property="og:title" content="Yapay Zekâ ile İstanbul Trafik Tahmini: GNN ve ST-GNN | GraphTraffic AI">
-<meta property="og:description" content="Yapay zekâ ile İstanbul trafik tahmini: GNN, ST-GNN ve Dynamic Graph Transformer ile +1 ila +6 saatlik tahmin, belirsizlik ve sensör arızası dayanıklılığı.">
+<meta property="og:title" content="İstanbul Trafik Tahmini: GNN, ST-GNN ve Kayıtlı Sonuçlar | GraphTraffic AI">
+<meta property="og:description" content="OSF ön kayıtlı İstanbul trafik tahmini araştırması: GNN, ST-GNN ve Dynamic Graph Transformer ile tamamlanmış Confirmatory v2 sonuçları ve kalıcı arşiv.">
 <meta property="og:image" content="https://faramarzkowsari.github.io/istanbul-graphtraffic-ai/assets/social-preview.png">
 <meta property="og:locale" content="tr_TR">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Yapay Zekâ ile İstanbul Trafik Tahmini: GNN ve ST-GNN | GraphTraffic AI">
-<meta name="twitter:description" content="Yapay zekâ ile İstanbul trafik tahmini: GNN, ST-GNN ve Dynamic Graph Transformer ile +1 ila +6 saatlik tahmin, belirsizlik ve sensör arızası dayanıklılığı.">
+<meta name="twitter:title" content="İstanbul Trafik Tahmini: GNN, ST-GNN ve Kayıtlı Sonuçlar | GraphTraffic AI">
+<meta name="twitter:description" content="OSF ön kayıtlı İstanbul trafik tahmini araştırması: GNN, ST-GNN ve Dynamic Graph Transformer ile tamamlanmış Confirmatory v2 sonuçları ve kalıcı arşiv.">
 <meta name="twitter:image" content="https://faramarzkowsari.github.io/istanbul-graphtraffic-ai/assets/social-preview.png">
 <script type="application/ld+json">
 {
@@ -42,7 +42,7 @@
       "@type": "SoftwareSourceCode",
       "@id": "https://faramarzkowsari.github.io/istanbul-graphtraffic-ai/#software",
       "name": "İstanbul GraphTraffic AI",
-      "description": "Open-source research software for multi-horizon Istanbul traffic forecasting with graph neural networks, ST-GNNs and Dynamic Graph Transformers.",
+      "description": "Open-source research software for multi-horizon Istanbul traffic forecasting with graph neural networks and Dynamic Graph Transformers.",
       "url": "https://faramarzkowsari.github.io/istanbul-graphtraffic-ai/",
       "codeRepository": "https://github.com/FaramarzKowsari/istanbul-graphtraffic-ai",
       "programmingLanguage": {
@@ -52,6 +52,7 @@
       "runtimePlatform": "Python 3.10+",
       "version": "0.1.0",
       "datePublished": "2026-08-13",
+      "dateModified": "2026-08-14",
       "license": "https://github.com/FaramarzKowsari/istanbul-graphtraffic-ai/blob/main/LICENSE",
       "author": {
         "@id": "https://faramarzkowsari.github.io/#faramarz-kowsari"
@@ -59,25 +60,16 @@
       "identifier": [
         {
           "@type": "PropertyValue",
-          "propertyID": "DOI",
+          "propertyID": "Zenodo DOI",
           "value": "10.5281/zenodo.21916357",
           "url": "https://doi.org/10.5281/zenodo.21916357"
         },
         {
           "@type": "PropertyValue",
-          "propertyID": "Concept DOI",
-          "value": "10.5281/zenodo.21916358",
-          "url": "https://doi.org/10.5281/zenodo.21916358"
+          "propertyID": "OSF Registration DOI",
+          "value": "10.17605/OSF.IO/FM5R7",
+          "url": "https://doi.org/10.17605/OSF.IO/FM5R7"
         }
-      ],
-      "keywords": [
-        "Istanbul traffic forecasting",
-        "graph neural networks",
-        "ST-GNN",
-        "Graph Transformer",
-        "traffic prediction",
-        "uncertainty quantification",
-        "sensor-failure resilience"
       ]
     },
     {
@@ -85,20 +77,26 @@
       "@id": "https://faramarzkowsari.github.io/istanbul-graphtraffic-ai/#research-project",
       "name": "İstanbul GraphTraffic AI Research Project",
       "headline": "Uncertainty-Aware Spatiotemporal Graph Learning for Multi-Horizon Traffic Forecasting",
-      "description": "Research project investigating directed road topology, adaptive graph learning, ST-GNNs and Dynamic Graph Transformers for Istanbul traffic forecasting.",
+      "description": "Preregistered graph-based Istanbul traffic forecasting research with a completed registered confirmatory analysis.",
       "url": "https://faramarzkowsari.github.io/istanbul-graphtraffic-ai/",
       "creator": {
         "@id": "https://faramarzkowsari.github.io/#faramarz-kowsari"
       },
       "datePublished": "2026-08-13",
-      "version": "0.1.0"
+      "dateModified": "2026-08-14",
+      "identifier": {
+        "@type": "PropertyValue",
+        "propertyID": "OSF Registration DOI",
+        "value": "10.17605/OSF.IO/FM5R7",
+        "url": "https://doi.org/10.17605/OSF.IO/FM5R7"
+      }
     },
     {
       "@type": "WebPage",
       "@id": "https://faramarzkowsari.github.io/istanbul-graphtraffic-ai/tr/#webpage",
       "url": "https://faramarzkowsari.github.io/istanbul-graphtraffic-ai/tr/",
-      "name": "Yapay Zekâ ile İstanbul Trafik Tahmini: GNN ve ST-GNN | GraphTraffic AI",
-      "description": "Yapay zekâ ile İstanbul trafik tahmini: GNN, ST-GNN ve Dynamic Graph Transformer ile +1 ila +6 saatlik tahmin, belirsizlik ve sensör arızası dayanıklılığı.",
+      "name": "İstanbul Trafik Tahmini: GNN, ST-GNN ve Kayıtlı Sonuçlar | GraphTraffic AI",
+      "description": "OSF ön kayıtlı İstanbul trafik tahmini araştırması: GNN, ST-GNN ve Dynamic Graph Transformer ile tamamlanmış Confirmatory v2 sonuçları ve kalıcı arşiv.",
       "inLanguage": "tr",
       "author": {
         "@id": "https://faramarzkowsari.github.io/#faramarz-kowsari"
@@ -116,7 +114,6 @@
 }
 </script>
 <link rel="stylesheet" href="../assets/site.css">
-
 <style>
 html{scroll-behavior:smooth}
 .hero-preview{margin:0 0 34px;border:1px solid var(--line);border-radius:24px;overflow:hidden;background:var(--panel);box-shadow:0 24px 70px rgba(0,0,0,.22)}
@@ -124,31 +121,39 @@ html{scroll-behavior:smooth}
 .language-nav{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin:18px auto 34px}
 .language-nav a{padding:9px 16px;border:1px solid var(--line);border-radius:999px;text-decoration:none;font-weight:700}
 .language-nav a.active{background:var(--cyan);color:#04111b;border-color:var(--cyan)}
-.hero-actions,.badge-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px;align-items:center}
+.hero-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px;align-items:center}
 .hero-actions a{display:inline-flex;padding:9px 13px;border:1px solid var(--line);border-radius:999px;text-decoration:none;font-weight:600;background:rgba(13,32,49,.62)}
-.badge-row img{display:block;height:20px}
 .graph-image,.workflow-image{margin-top:22px;border:1px solid var(--line);border-radius:22px;overflow:hidden;background:var(--panel);box-shadow:0 18px 50px rgba(0,0,0,.24)}
 .caption{margin-top:12px;color:var(--muted);font-size:14px}
-.seo-intro{font-size:18px;color:var(--muted);max-width:900px}
-.archive{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
-.archive-card{background:linear-gradient(145deg,rgba(15,42,64,.95),rgba(10,24,36,.95));border:1px solid var(--line);border-radius:20px;padding:22px}
-.doi{display:block;margin:8px 0;font-size:20px;font-weight:750;color:var(--cyan)}
-.doc-links{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-.doc-links a{display:block;padding:15px 17px;border:1px solid var(--line);border-radius:14px;background:rgba(13,32,49,.65);text-decoration:none}
+.seo-intro{font-size:18px;color:var(--muted);max-width:950px}
+.result-grid,.archive{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.result-card,.archive-card{background:linear-gradient(145deg,rgba(15,42,64,.95),rgba(10,24,36,.95));border:1px solid var(--line);border-radius:20px;padding:22px}
+.result-card strong{display:block;font-size:27px;color:var(--cyan);margin:7px 0}
+.status-note{margin:20px 0;padding:18px 20px;border:1px solid var(--line);border-radius:16px;background:rgba(13,32,49,.68)}
+.doi{display:block;margin:8px 0;font-size:18px;font-weight:750;color:var(--cyan);overflow-wrap:anywhere}
 footer{margin-top:60px;padding:28px 0 10px;border-top:1px solid var(--line);color:var(--muted);text-align:center}
-@media(max-width:900px){.archive,.doc-links{grid-template-columns:1fr}}
+@media(max-width:900px){.result-grid,.archive{grid-template-columns:1fr}}
 </style>
-
 </head>
 <body><main class="wrap">
+
 <div class="hero-preview"><img src="../assets/social-preview.png" alt="Grafik sinir ağları ile İstanbul trafik tahmini"></div>
-<header><div class="hero"><div class="eyebrow">Açık kaynak kentsel yapay zekâ araştırması · İstanbul</div><h1>Yapay Zekâ ile İstanbul Trafik Tahmini: GNN ve ST-GNN</h1><p>İstanbul GraphTraffic AI · ST-GNN · Dynamic Graph Transformer · Çok ufuklu tahmin</p><div><span class="tag">Grafik Sinir Ağları</span><span class="tag">ST-GNN</span><span class="tag">Graph Transformer</span><span class="tag">Trafik Tahmini</span><span class="tag">Belirsizlik</span></div><div class="hero-actions"><a href="https://github.com/FaramarzKowsari/istanbul-graphtraffic-ai">GitHub Deposu</a><a href="https://doi.org/10.5281/zenodo.21916357">Zenodo DOI</a></div></div><aside class="profile"><img src="https://avatars.githubusercontent.com/u/105053743?v=4&s=512" alt="Faramarz Kowsari"><h3>Faramarz Kowsari</h3><p>Yazar · Yazılım Mühendisi · Yapay Zekâ Araştırmacısı<br>İstanbul, Türkiye</p></aside></header>
+<header><div class="hero"><div class="eyebrow">Ön kayıtlı açık kentsel yapay zekâ araştırması · İstanbul</div><h1>Yapay Zekâ ile İstanbul Trafik Tahmini: GNN ve ST-GNN</h1><p>İstanbul GraphTraffic AI · Registered Confirmatory v2 tamamlandı</p><div><span class="tag">Grafik Sinir Ağları</span><span class="tag">ST-GNN</span><span class="tag">Dynamic Graph Transformer</span><span class="tag">OSF Preregistered</span></div><div class="hero-actions"><a href="https://github.com/FaramarzKowsari/istanbul-graphtraffic-ai">GitHub Deposu</a><a href="https://doi.org/10.17605/OSF.IO/FM5R7">OSF Ön Kaydı</a><a href="../confirmatory-results.html">Doğrulayıcı Sonuçlar</a><a href="https://doi.org/10.5281/zenodo.21916357">Zenodo DOI</a></div></div><aside class="profile"><img src="https://avatars.githubusercontent.com/u/105053743?v=4&s=512" alt="Faramarz Kowsari"><h3>Faramarz Kowsari</h3><p>Yazar · Yazılım Mühendisi · Yapay Zekâ Araştırmacısı<br>İstanbul, Türkiye</p></aside></header>
 <nav class="language-nav"><a href="../">English</a><a class="active" href="./">Türkçe</a><a href="../es/">Español</a></nav>
-<section><h2>Yapay zekâ ile İstanbul trafik tahmini nasıl modellenebilir?</h2><p class="seo-intro"><strong>İstanbul GraphTraffic AI</strong>, İstanbul trafik verilerini sensörler ve yol ilişkilerinden oluşan bir grafik olarak modelleyen yeniden üretilebilir bir araştırma projesidir. Projede <strong>Grafik Sinir Ağları (GNN)</strong>, <strong>ST-GNN</strong> ve <strong>Dynamic Graph Transformer</strong> kullanılarak +1, +2, +3 ve +6 saatlik trafik tahmini, tahmin belirsizliği, yönlü yol topolojisi ve sensör arızalarına dayanıklılık araştırılır.</p></section>
-<section><div class="card"><h3>ST-GNN İstanbul metodolojisi</h3><p>İstanbul trafik tahmininde sensörlerin node, yol ilişkilerinin edge olarak modellenmesi; zamansal pencereler, adaptif grafik, ST-GNN ve Dynamic Graph Transformer mimarisi teknik sayfada ayrıntılı açıklanır.</p><p><a href="../st-gnn-istanbul.html"><strong>ST-GNN Istanbul methodology →</strong></a></p></div></section>
-<section><h2>Araştırma soruları</h2><div class="grid"><div class="card"><h3>Yol topolojisi</h3><p>Yönlü yol grafiği, yalnızca coğrafi yakınlığa dayalı sensör bağlantılarından daha iyi tahmin sağlıyor mu?</p></div><div class="card"><h3>Adaptif grafik öğrenme</h3><p>Öğrenilen bağlantılar, sabit fiziksel yol ağının yakalayamadığı trafik bağımlılıklarını bulabiliyor mu?</p></div><div class="card"><h3>Çok ufuklu tahmin</h3><p>ST-GNN ve Graph Transformer modelleri +1, +2, +3 ve +6 saatlik ufuklarda nasıl davranıyor?</p></div></div></section>
-<section><h2>İstanbul yol ve trafik sensörü ağının grafik gösterimi</h2><div class="graph-image"><img src="../assets/istanbul-graph-network.png" alt="İstanbul trafik sensörleri, yol koridorları ve Boğaz geçişlerinin grafik gösterimi"></div></section>
-<section><h2>ST-GNN ve Dynamic Graph Transformer araştırma akışı</h2><div class="workflow-image"><img src="../assets/research-workflow.png" alt="İstanbul trafik tahmini için ST-GNN ve Dynamic Graph Transformer araştırma iş akışı"></div></section>
-<section><h2>Araştırma arşivi</h2><div class="archive"><div class="archive-card"><strong>v0.1.0 Sürüm DOI'si</strong><a class="doi" href="https://doi.org/10.5281/zenodo.21916357">10.5281/zenodo.21916357</a></div><div class="archive-card"><strong>Concept DOI</strong><a class="doi" href="https://doi.org/10.5281/zenodo.21916358">10.5281/zenodo.21916358</a></div></div></section>
+<section><h2>Ön kayıtlı grafik tabanlı İstanbul trafik tahmini</h2><p class="seo-intro">İstanbul GraphTraffic AI, herkese açık İBB saatlik trafik verileri üzerinde zamansal tahmin, yönlü yol grafikleri, adaptif bağlantılar ve Dynamic Graph Transformer modellerini inceleyen yeniden üretilebilir bir araştırmadır. Kayıtlı Confirmatory Protocol v2 analizi tamamlanmış ve kalıcı olarak arşivlenmiştir.</p></section>
+<section><h2>Kayıtlı doğrulayıcı sonuç</h2><div class="result-grid">
+<div class="result-card"><span>Birincil H1 · +1h</span><strong>−0.0181 km/h</strong><p>DGT Directed Road + Adaptive eksi Temporal MLP ortalama eşleştirilmiş günlük MAE farkı.</p></div>
+<div class="result-card"><span>Birincil istatistiksel test</span><strong>p = 0.5000</strong><p>Tek yönlü eşleştirilmiş Wilcoxon; kayıtlı α = 0.05. H1 istatistiksel olarak desteklenmedi.</p></div>
+<div class="result-card"><span>Göreli MAE farkı</span><strong>−0.490%</strong><p>Mutlak fark için %95 hiyerarşik bootstrap GA: [−0.1760, +0.1120] km/h.</p></div>
+</div><div class="status-note"><strong>Şeffaf kayıtlı çıkarım:</strong> birincil grafik-model üstünlüğü hipotezi desteklenmedi. H3 için ham p = 0.0137 olsa da, preregistered Holm düzeltmesinden sonra p = 0.0684 oldu ve anlamlı kalmadı.</div></section>
+<section><h2>Doğrulayıcı veri kaydı</h2><div class="grid"><div class="card"><h3>Kullanılan aylar</h3><p><strong>2024-05 ve 2024-11</strong> dondurulmuş uygunluk ve training-coverage kurallarını karşıladı.</p></div><div class="card"><h3>Kapsama dışlamaları</h3><p>2024-02 ve 2024-08, önceden kaydedilmiş 64-node / %98 training-coverage kuralı nedeniyle dışlandı.</p></div><div class="card"><h3>Keşifsel ayrım</h3><p>Ocak 2025 keşifsel geliştirmede kullanıldığı için doğrulayıcı çıkarımdan hariç tutulmuştur.</p></div></div></section>
+<section><h2>İstanbul yol ve trafik sensörü ağı</h2><div class="graph-image"><img src="../assets/istanbul-graph-network.png" alt="İstanbul trafik sensörleri ve yol bağlantılarının grafik gösterimi"></div></section>
+<section><h2>Araştırma akışı</h2><div class="workflow-image"><img src="../assets/research-workflow.png" alt="İstanbul trafik tahmini araştırma iş akışı"></div></section>
+<section><h2>Kalıcı araştırma arşivi</h2><div class="archive">
+<div class="archive-card"><strong>OSF Registration DOI</strong><a class="doi" href="https://doi.org/10.17605/OSF.IO/FM5R7">10.17605/OSF.IO/FM5R7</a></div>
+<div class="archive-card"><strong>Zenodo Version DOI</strong><a class="doi" href="https://doi.org/10.5281/zenodo.21916357">10.5281/zenodo.21916357</a></div>
+<div class="archive-card"><strong>Doğrulayıcı kanıt arşivi</strong><a class="doi" href="https://github.com/FaramarzKowsari/istanbul-graphtraffic-ai/tree/main/archive/confirmatory-v2">archive/confirmatory-v2</a></div>
+</div></section>
 <footer><strong>İstanbul GraphTraffic AI</strong><br>Faramarz Kowsari · İstanbul, Türkiye</footer>
+
 </main></body></html>

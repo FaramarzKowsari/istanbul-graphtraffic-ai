@@ -1,0 +1,28 @@
+İstanbul GraphTraffic AI — Registered Results Website Update
+
+Replace these repository files exactly:
+
+README.md
+docs/index.html
+docs/tr/index.html
+docs/es/index.html
+docs/sitemap.xml
+
+Add this NEW file:
+
+docs/confirmatory-results.html
+
+Recommended commit message:
+Publish registered confirmatory v2 results and permanent archive
+
+After pushing, GitHub Actions should run CI, Pages sanity check, and pages build/deployment.
+
+The update adds:
+- OSF preregistration DOI 10.17605/OSF.IO/FM5R7
+- Confirmatory v2 completion status
+- primary H1 result and correct non-significant interpretation
+- H3 raw and Holm-adjusted result
+- permanent archive links
+- English/Turkish/Spanish website updates
+- dedicated confirmatory-results.html
+- sitemap entry for the new results page
