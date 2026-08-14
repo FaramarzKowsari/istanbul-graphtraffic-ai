@@ -1,0 +1,62 @@
+OSF REGISTRATION + CONFIRMATORY BENCHMARK
+========================================
+
+IMPORTANT: DO NOT RUN THE CONFIRMATORY WORKFLOW YET.
+
+The duplicate "Real IBB Residual Graph Signal Audit #2" is not needed. If it is queued,
+you may cancel it. Run #1 already completed successfully and supplied the exploratory
+evidence used to define this confirmatory protocol.
+
+STEP 1 — INSTALL THIS OVERLAY
+-----------------------------
+Repository:
+C:\Faramarz\GitHub\15-traffic\istanbul-graphtraffic-ai
+
+Extract the ZIP and copy all included files onto the repository root.
+
+Commit:
+Freeze OSF confirmatory protocol
+
+Push origin.
+
+STEP 2 — CREATE THE OSF REGISTRATION
+------------------------------------
+Use the OSF "Secondary Data Preregistration" template because this study analyzes
+existing public IBB data.
+
+Use:
+docs/OSF_SECONDARY_DATA_PREREGISTRATION_DRAFT.md
+
+as the source text for the registration form.
+
+Make the registration public immediately if you want an OSF DOI immediately.
+Review everything before submission: OSF registrations are frozen after submission.
+
+STEP 3 — AFTER OSF REGISTRATION IS ACCEPTED
+-------------------------------------------
+Edit ONLY these three values in:
+
+configs/confirmatory_plan.yaml
+
+osf_registration_doi
+osf_registration_url
+registration_timestamp_utc
+
+Do not change hypotheses, months, models, seeds, endpoints, or analysis rules.
+
+Commit:
+Link OSF registration to frozen confirmatory plan
+
+Push origin.
+
+STEP 4 — RUN ONCE
+-----------------
+GitHub -> Actions -> Registered IBB Confirmatory Benchmark -> Run workflow
+
+There are intentionally NO user-editable workflow parameters.
+
+Expected artifact:
+registered-ibb-confirmatory
+
+January 2025 is explicitly excluded from confirmatory inference because it was already
+used for exploration.

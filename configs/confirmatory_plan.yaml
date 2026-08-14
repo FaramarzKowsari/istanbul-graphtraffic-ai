@@ -1,0 +1,123 @@
+study:
+  title: "Incremental Predictive Value of Spatial Graph Structure in Hourly Istanbul Traffic Forecasting"
+  status: "confirmatory-after-exploration"
+  osf_registration_doi: "TO_BE_FILLED_AFTER_OSF_REGISTRATION"
+  osf_registration_url: "TO_BE_FILLED_AFTER_OSF_REGISTRATION"
+  registration_timestamp_utc: "TO_BE_FILLED_AFTER_OSF_REGISTRATION"
+
+prior_exploration:
+  excluded_from_confirmatory_analysis:
+    - "2025-01"
+  disclosure: >
+    January 2025 IBB hourly traffic data were used extensively for exploratory
+    pilots, graph ablations, local-density sampling, and residual graph-signal
+    audits. January 2025 is excluded from all confirmatory hypothesis tests.
+
+data:
+  dataset: "IBB Hourly Traffic Density Data Set"
+  node_count: 64
+  cluster_size: 4
+  min_train_coverage: 0.98
+  history_hours: 24
+  horizons_hours: [1, 2, 3, 6]
+  train_fraction: 0.70
+  val_fraction: 0.15
+  target: "AVERAGE_SPEED / speed in source km/h"
+  features:
+    - speed_z
+    - hour_sin
+    - hour_cos
+    - dow_sin
+    - dow_cos
+    - is_weekend
+
+confirmatory_month_slots:
+  winter:
+    ordered_candidates: ["2025-02", "2025-03"]
+  spring:
+    ordered_candidates: ["2025-05", "2025-04"]
+  summer:
+    ordered_candidates: ["2025-08", "2025-07"]
+  autumn:
+    ordered_candidates: ["2025-11", "2025-10"]
+  selection_rule: >
+    For each seasonal slot, use the first month in the ordered candidate list
+    for which the official IBB CKAN package exposes a resource. Availability is
+    determined from resource metadata only, before downloading or inspecting
+    traffic values. No replacement month may be selected based on model results.
+
+graph:
+  road_source: "OSRM Table API using OpenStreetMap-derived driving routes"
+  directed: true
+  outgoing_k: 6
+  weighting: "exp(-directed_travel_time_seconds / tau)"
+  tau_rule: "median selected outgoing travel time, computed separately per month"
+  adaptive_component: true
+
+models:
+  deterministic_baseline:
+    - historical_average
+  neural:
+    - temporal_mlp
+    - dgt_identity_adaptive
+    - dgt_directed_road_adaptive
+  fixed_hyperparameters:
+    hidden_dim: 48
+    heads: 4
+    dropout: 0.10
+    epochs: 30
+    batch_size: 16
+    learning_rate: 0.001
+    weight_decay: 0.0001
+    early_stopping_patience: 5
+  seeds: [2026, 2027, 2028]
+
+hypotheses:
+  primary:
+    id: H1
+    statement: >
+      At +1h, Dynamic Graph Transformer with directed road graph plus adaptive
+      adjacency has lower held-out MAE than Temporal MLP.
+    test: "one-sided paired Wilcoxon signed-rank on seed-averaged daily MAE; alternative DGT-road < MLP"
+    alpha: 0.05
+  secondary:
+    - id: H2
+      statement: >
+        At +1h, directed-road+adaptive DGT has lower held-out MAE than
+        identity+adaptive DGT.
+    - id: H3
+      statement: >
+        The incremental benefit of directed-road DGT over Temporal MLP is larger
+        at +1h than at +6h.
+    - id: H4
+      statement: >
+        DGT-road vs Temporal MLP differences at +2h, +3h, and +6h are evaluated
+        as secondary horizon-specific comparisons.
+  multiplicity: >
+    H1 is the single primary test and is not multiplicity-adjusted. H2-H4 and
+    horizon-specific secondary tests are adjusted using Holm's method within
+    the secondary family.
+
+statistics:
+  unit_for_hypothesis_tests: "calendar-day mean absolute error, averaged across nodes and then averaged across neural seeds"
+  effect_size: "mean paired daily MAE difference and relative MAE difference"
+  confidence_intervals: >
+    95% hierarchical bootstrap intervals with 10000 replicates, resampling
+    months and then test days within sampled months.
+  bootstrap_seed: 20260814
+  missing_rule: >
+    A month is excluded only if the official resource is unavailable or fewer
+    than 64 nodes satisfy the preregistered training-only coverage rule. The
+    reason is recorded. No exclusion is allowed based on forecast performance.
+  inference_boundary: >
+    No state-of-the-art claim will be made from this study alone. January 2025
+    remains exploratory and is not pooled into confirmatory inference.
+
+secondary_endpoints:
+  - RMSE
+  - MAPE
+  - R2
+  - predictive_interval_coverage
+  - predictive_interval_width
+  - sensor_failure_random_10_20_30_percent
+  - sensor_failure_structured_10_20_30_percent
