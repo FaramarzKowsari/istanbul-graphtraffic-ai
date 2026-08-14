@@ -1,0 +1,101 @@
+name: Registered IBB Confirmatory Benchmark v2
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  confirmatory-v2:
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+
+    steps:
+      - name: Checkout frozen protocol v2
+        uses: actions/checkout@v6
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install project
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install -e .
+
+      - name: Validate registered wrapper
+        run: |
+          python -m py_compile \
+            scripts/run_confirmatory_multimonth.py \
+            scripts/run_registered_confirmatory.py
+
+      - name: Unit tests
+        run: pytest -q
+
+      - name: Verify Protocol v2 OSF registration metadata is frozen
+        run: |
+          python - <<'PY'
+          import yaml
+
+          p = yaml.safe_load(
+              open("configs/confirmatory_plan_v2.yaml", encoding="utf-8")
+          )
+          s = p["study"]
+
+          assert str(s.get("protocol_version")) == "2.0"
+
+          for k in (
+              "osf_registration_doi",
+              "osf_registration_url",
+              "registration_timestamp_utc",
+          ):
+              v = str(s.get(k, ""))
+              assert v and "TO_BE_FILLED" not in v, (
+                  f"{k} must be filled only after Protocol v2 is publicly "
+                  "registered/frozen on OSF"
+              )
+
+          predecessor = p["predecessor_registration"]
+          assert predecessor["osf_registration_doi"] == "10.17605/OSF.IO/FM5R7"
+
+          audit = p["feasibility_audit"]
+          assert audit["traffic_values_downloaded_or_inspected"] is False
+
+          print("Protocol v2 OSF registration:", s["osf_registration_doi"])
+          print("Predecessor OSF registration:", predecessor["osf_registration_doi"])
+          PY
+
+      - name: Run single registered confirmatory benchmark v2
+        env:
+          PYTHONUNBUFFERED: "1"
+        run: |
+          python scripts/run_registered_confirmatory.py \
+            --plan configs/confirmatory_plan_v2.yaml
+
+      - name: Show registered result
+        if: always()
+        run: |
+          if [ -f reports/confirmatory/CONFIRMATORY_RESULTS.md ]; then
+            cat reports/confirmatory/CONFIRMATORY_RESULTS.md
+          fi
+          if [ -f reports/confirmatory/REGISTERED_EFFECTS_AND_PROVENANCE.md ]; then
+            cat reports/confirmatory/REGISTERED_EFFECTS_AND_PROVENANCE.md
+          fi
+
+      - name: Upload confirmatory v2 archive
+        if: always()
+        uses: actions/upload-artifact@v6
+        with:
+          name: registered-ibb-confirmatory-v2
+          if-no-files-found: warn
+          retention-days: 90
+          path: |
+            reports/confirmatory/**
+            configs/confirmatory_plan_v2.yaml
+            configs/confirmatory_generated/**
+            artifacts/confirmatory/*/*/*/metrics.json
+            artifacts/confirmatory/*/*/*/training_history.json

@@ -1,0 +1,167 @@
+study:
+  title: "Incremental Predictive Value of Spatial Graph Structure in Hourly Istanbul Traffic Forecasting: A Confirmatory Multi-Season Study (Protocol v2)"
+  protocol_version: "2.0"
+  status: "confirmatory-feasibility-revision-before-outcome-access"
+  osf_registration_doi: "TO_BE_FILLED_AFTER_OSF_V2_REGISTRATION"
+  osf_registration_url: "TO_BE_FILLED_AFTER_OSF_V2_REGISTRATION"
+  registration_timestamp_utc: "TO_BE_FILLED_AFTER_OSF_V2_REGISTRATION"
+
+predecessor_registration:
+  osf_registration_doi: "10.17605/OSF.IO/FM5R7"
+  osf_registration_url: "https://osf.io/fm5r7/"
+  registration_timestamp_utc: "2026-08-14T16:16:00Z"
+  execution_status: "not_executable_due_to_preregistered_resource_unavailability"
+  failed_workflow_run: "https://github.com/FaramarzKowsari/istanbul-graphtraffic-ai/actions/runs/31821117637"
+  explanation: >
+    The original preregistration fixed 2025 seasonal candidate months. A first
+    registered execution stopped automatically because fewer than two seasonal
+    confirmatory months were analyzable. A subsequent metadata-only audit of the
+    official IBB CKAN package showed that the package exposed 61 resources and
+    no preregistered 2025 candidate month after January 2025 was visible in the
+    official resource metadata. No traffic values from the replacement 2024
+    candidate months were downloaded or inspected before defining Protocol v2.
+
+feasibility_audit:
+  audit_type: "metadata-only official-resource availability audit"
+  workflow_run: "https://github.com/FaramarzKowsari/istanbul-graphtraffic-ai/actions/runs/31824228616"
+  audit_timestamp_utc: "2026-08-14T17:29:52Z"
+  official_ckan_package: "Hourly Traffic Density Data Set"
+  resource_count_observed: 61
+  traffic_values_downloaded_or_inspected: false
+  finding: >
+    The official package exposed resources through January 2025. None of the
+    original 2025 confirmatory candidates (2025-02, 2025-03, 2025-04, 2025-05,
+    2025-07, 2025-08, 2025-10, 2025-11) was visible in resource metadata. The
+    corresponding seasonal 2024 candidate months used below were visible in the
+    same official package metadata.
+
+prior_exploration:
+  excluded_from_confirmatory_analysis:
+    - "2025-01"
+  disclosure: >
+    January 2025 IBB hourly traffic data were used extensively for exploratory
+    pilots, graph ablations, local-density sampling, and residual graph-signal
+    audits. January 2025 is excluded from all confirmatory hypothesis tests.
+    The 2024 confirmatory candidate months in Protocol v2 were not downloaded or
+    inspected for traffic values or model outcomes before this protocol was
+    defined; only official CKAN resource metadata were inspected for feasibility.
+
+data:
+  dataset: "IBB Hourly Traffic Density Data Set"
+  node_count: 64
+  cluster_size: 4
+  min_train_coverage: 0.98
+  history_hours: 24
+  horizons_hours: [1, 2, 3, 6]
+  train_fraction: 0.70
+  val_fraction: 0.15
+  target: "AVERAGE_SPEED / speed in source km/h"
+  features:
+    - speed_z
+    - hour_sin
+    - hour_cos
+    - dow_sin
+    - dow_cos
+    - is_weekend
+
+confirmatory_month_slots:
+  winter:
+    ordered_candidates: ["2024-02", "2024-03"]
+  spring:
+    ordered_candidates: ["2024-05", "2024-04"]
+  summer:
+    ordered_candidates: ["2024-08", "2024-07"]
+  autumn:
+    ordered_candidates: ["2024-11", "2024-10"]
+  selection_rule: >
+    For each seasonal slot, use the first month in the ordered candidate list
+    for which the official IBB CKAN package exposes a resource. Availability is
+    determined from resource metadata only, before downloading or inspecting
+    traffic values. The order is frozen before confirmatory outcome access. No
+    replacement month may be selected based on traffic values, model results,
+    effect sizes, statistical significance, or forecast performance.
+
+graph:
+  road_source: "OSRM Table API using OpenStreetMap-derived driving routes"
+  directed: true
+  outgoing_k: 6
+  weighting: "exp(-directed_travel_time_seconds / tau)"
+  tau_rule: "median selected outgoing travel time, computed separately per month"
+  adaptive_component: true
+
+models:
+  deterministic_baseline:
+    - historical_average
+  neural:
+    - temporal_mlp
+    - dgt_identity_adaptive
+    - dgt_directed_road_adaptive
+  fixed_hyperparameters:
+    hidden_dim: 48
+    heads: 4
+    dropout: 0.10
+    epochs: 30
+    batch_size: 16
+    learning_rate: 0.001
+    weight_decay: 0.0001
+    early_stopping_patience: 5
+  seeds: [2026, 2027, 2028]
+
+hypotheses:
+  primary:
+    id: H1
+    statement: >
+      At +1h, Dynamic Graph Transformer with directed road graph plus adaptive
+      adjacency has lower held-out MAE than Temporal MLP.
+    test: "one-sided paired Wilcoxon signed-rank on seed-averaged daily MAE; alternative DGT-road < MLP"
+    alpha: 0.05
+  secondary:
+    - id: H2
+      statement: >
+        At +1h, directed-road+adaptive DGT has lower held-out MAE than
+        identity+adaptive DGT.
+    - id: H3
+      statement: >
+        The incremental benefit of directed-road DGT over Temporal MLP is larger
+        at +1h than at +6h.
+    - id: H4
+      statement: >
+        DGT-road vs Temporal MLP differences at +2h, +3h, and +6h are evaluated
+        as three secondary horizon-specific comparisons.
+  multiplicity: >
+    H1 is the single primary test and is not multiplicity-adjusted. H2, H3,
+    H4_2h, H4_3h, and H4_6h form one secondary family and are adjusted using
+    Holm's method.
+
+statistics:
+  unit_for_hypothesis_tests: "calendar-day mean absolute error, averaged across nodes and then averaged across neural seeds"
+  effect_size: "mean paired daily MAE difference and relative MAE difference"
+  confidence_intervals: >
+    95% hierarchical bootstrap intervals with 10000 replicates, resampling
+    months and then test days within sampled months.
+  bootstrap_replicates: 10000
+  bootstrap_seed: 20260814
+  missing_rule: >
+    A month is excluded only if the official resource is unavailable or fewer
+    than 64 nodes satisfy the preregistered training-only coverage rule. The
+    reason is recorded. No exclusion is allowed based on forecast performance.
+  minimum_analyzable_seasons: 2
+  insufficient_data_rule: >
+    If fewer than two preregistered seasonal months are analyzable under the
+    registered resource-availability and 64-node coverage criteria, confirmatory
+    inferential testing is not performed and the study reports that the
+    preregistered data requirement was not met.
+  inference_boundary: >
+    No state-of-the-art claim will be made from this study alone. January 2025
+    remains exploratory and is not pooled into confirmatory inference. The
+    predecessor preregistration's infeasibility is reported transparently and is
+    not treated as evidence for or against H1-H4.
+
+secondary_endpoints:
+  - RMSE
+  - MAPE
+  - R2
+  - predictive_interval_coverage
+  - predictive_interval_width
+  - sensor_failure_random_10_20_30_percent
+  - sensor_failure_structured_10_20_30_percent
