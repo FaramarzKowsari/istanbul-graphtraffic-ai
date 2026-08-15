@@ -40,16 +40,26 @@ The project now contains a **public OSF preregistration and a completed register
 |---|---:|
 | Mean paired daily MAE difference | **−0.0181 km/h** |
 | Relative MAE difference | **−0.490%** |
-| 95% hierarchical bootstrap CI | **[−0.1760, +0.1120]** |
+| 95% hierarchical bootstrap CI | **[−0.1760, +0.1120] km/h** |
 | One-sided paired Wilcoxon p | **0.500000** |
 | Registered α | **0.05** |
 
-**Conclusion:** the preregistered H1 superiority hypothesis was **not statistically supported**.
+**Registered conclusion:** the preregistered H1 superiority hypothesis was **not statistically supported**.
 
 H3 showed a raw +1h-vs-+6h horizon signal (raw p = **0.013672**), but it was **not significant after the preregistered Holm correction** (adjusted p = **0.068359**).
 
 Confirmatory months used: **2024-05** and **2024-11**.  
 `2024-02` and `2024-08` were excluded by the frozen 64-node / 98% training-coverage rule. January 2025 remains excluded from confirmatory inference because it was used in exploratory development.
+
+## Scientific interpretation
+
+The primary point estimate is slightly favorable to the registered directed-road graph model, but the effect is small, the 95% interval crosses zero, and the preregistered one-sided test is non-significant. The most defensible interpretation is therefore:
+
+> **Under the frozen Confirmatory Protocol v2 and the analyzable confirmatory months, superiority of DGT Directed Road + Adaptive over the Temporal MLP at +1h was not demonstrated.**
+
+This result should **not** be interpreted as proof that graph structure is useless, nor as evidence of universal equivalence between graph and temporal models. It is a bounded confirmatory result under the registered data, eligibility rules, model specifications, horizons, seeds, and statistical procedures.
+
+The project deliberately preserves the non-significant result rather than introducing post-hoc model changes, replacement months, additional tuning, or alternative tests. That separation between preregistered inference and later exploratory work is part of the research contribution.
 
 ## Evidence and reproducibility
 
@@ -100,7 +110,7 @@ pytest -q
 
 Raw third-party İBB files are not redistributed. Synthetic data are for pipeline smoke testing only and are not real İstanbul benchmark evidence.
 
-The project does **not** claim universal graph-model superiority or production readiness.
+The project does **not** claim universal graph-model superiority, graph-model equivalence, or production readiness.
 
 ---
 
@@ -120,13 +130,19 @@ The project does **not** claim universal graph-model superiority or production r
 
 - MAE farkı: **−0.0181 km/h**
 - göreli MAE farkı: **−0.490%**
-- %95 hiyerarşik bootstrap GA: **[−0.1760, +0.1120]**
+- %95 hiyerarşik bootstrap GA: **[−0.1760, +0.1120] km/h**
 - tek yönlü eşleştirilmiş Wilcoxon p: **0.500000**
 - α = **0.05**
 
 H1 istatistiksel olarak desteklenmedi. H3 için ham p = **0.013672**, ancak Holm düzeltmesinden sonra p = **0.068359** olduğundan ikincil sonuç anlamlı kalmadı.
 
-Doğrulayıcı aylar **2024-05** ve **2024-11** idi. `2024-02` ve `2024-08` dondurulmuş coverage kuralıyla dışlandı; Ocak 2025 keşifsel çalışmada kullanıldığı için doğrulayıcı çıkarımdan hariçtir.
+Doğrulayıcı aylar **2024-05** ve **2024-11** idi. `2024-02` ve `2024-08` dondurulmuş 64 düğüm / %98 eğitim-kapsama kuralıyla dışlandı; Ocak 2025 keşifsel çalışmada kullanıldığı için doğrulayıcı çıkarımdan hariçtir.
+
+### Bilimsel yorum
+
+Birincil nokta tahmini yön olarak kayıtlı grafik modelini hafifçe desteklemektedir; ancak etki küçüktür, %95 güven aralığı sıfırı kapsamaktadır ve önceden kaydedilmiş test anlamlı değildir. Bu nedenle savunulabilir sonuç şudur: **dondurulmuş Protocol v2 ve analiz edilebilir doğrulayıcı aylar altında, +1h ufkunda yönlendirilmiş-yol DGT modelinin Temporal MLP'ye üstünlüğü gösterilememiştir.**
+
+Bu sonuç, grafik yapısının yararsız olduğunun veya grafik ve zamansal modellerin evrensel olarak eşdeğer olduğunun kanıtı değildir. Sonuç; kayıtlı veri, uygunluk kuralları, modeller, tohumlar, ufuklar ve istatistiksel prosedürlerle sınırlıdır.
 
 ---
 
@@ -146,13 +162,19 @@ Comparación a +1h: DGT Directed Road + Adaptive frente a Temporal MLP.
 
 - diferencia de MAE: **−0.0181 km/h**
 - diferencia relativa de MAE: **−0.490%**
-- IC bootstrap jerárquico del 95%: **[−0.1760, +0.1120]**
+- IC bootstrap jerárquico del 95%: **[−0.1760, +0.1120] km/h**
 - p de Wilcoxon pareado unilateral: **0.500000**
 - α = **0.05**
 
 H1 no recibió apoyo estadístico. H3 tuvo p bruto = **0.013672**, pero después de la corrección de Holm p = **0.068359**, por lo que no siguió siendo significativo.
 
-Los meses confirmatorios utilizados fueron **2024-05** y **2024-11**. `2024-02` y `2024-08` se excluyeron por la regla congelada de cobertura; enero de 2025 permanece excluido de la inferencia confirmatoria por su uso exploratorio.
+Los meses confirmatorios utilizados fueron **2024-05** y **2024-11**. `2024-02` y `2024-08` se excluyeron por la regla congelada de 64 nodos / 98% de cobertura de entrenamiento; enero de 2025 permanece excluido de la inferencia confirmatoria por su uso exploratorio.
+
+### Interpretación científica
+
+La estimación puntual primaria favorece ligeramente, en dirección, al modelo de grafo registrado; sin embargo, el efecto es pequeño, el intervalo del 95% cruza cero y la prueba prerregistrada no es significativa. Por ello, la conclusión defendible es: **bajo el Protocol v2 congelado y los meses confirmatorios analizables, no se demostró la superioridad del DGT con grafo vial dirigido sobre el Temporal MLP a +1h.**
+
+Este resultado no demuestra que la estructura de grafo sea inútil ni que los modelos de grafo y temporales sean universalmente equivalentes. La inferencia está limitada por los datos, reglas de elegibilidad, modelos, semillas, horizontes y procedimientos estadísticos registrados.
 
 ---
 
