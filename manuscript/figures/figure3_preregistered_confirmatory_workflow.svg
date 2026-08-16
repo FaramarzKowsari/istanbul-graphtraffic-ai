@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1350" viewBox="0 0 1800 1350">
+  <rect width="1800" height="1350" fill="white"/>
+  <style>
+    .title{font:700 42px Arial,Helvetica,sans-serif;fill:#111}
+    .subtitle{font:400 22px Arial,Helvetica,sans-serif;fill:#444}
+    .box{fill:#fff;stroke:#222;stroke-width:3;rx:18;ry:18}
+    .h{font:700 24px Arial,Helvetica,sans-serif;fill:#111}
+    .b{font:400 19px Arial,Helvetica,sans-serif;fill:#222}
+    .arrow{stroke:#333;stroke-width:4;fill:none;marker-end:url(#arrow)}
+    .note{font:italic 18px Arial,Helvetica,sans-serif;fill:#555}
+  </style>
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L10,5 L0,10 z" fill="#333"/>
+    </marker>
+  </defs>
+
+  <text x="900" y="70" text-anchor="middle" class="title">Figure 3. Preregistered Confirmatory Study Workflow</text>
+  <text x="900" y="108" text-anchor="middle" class="subtitle">İstanbul GraphTraffic AI — from registration and feasibility control to frozen inference and public archival</text>
+
+  <!-- row 1 -->
+  <rect x="90" y="170" width="720" height="210" class="box"/>
+  <text x="125" y="215" class="h">1. OSF preregistration</text>
+  <text x="125" y="255" class="b">
+    <tspan x="125" dy="0">• H1–H4 defined before confirmatory outcome access</tspan>
+    <tspan x="125" dy="32">• Primary endpoint: +1-hour MAE</tspan>
+    <tspan x="125" dy="32">• Model family, horizons, seeds and tests frozen</tspan>
+    <tspan x="125" dy="32">• January 2025 reserved as exploratory and excluded</tspan>
+  </text>
+
+  <rect x="990" y="170" width="720" height="210" class="box"/>
+  <text x="1025" y="215" class="h">2. Protocol v2 feasibility correction</text>
+  <text x="1025" y="255" class="b">
+    <tspan x="1025" dy="0">• Official İBB CKAN metadata audited</tspan>
+    <tspan x="1025" dy="32">• Infeasible seasonal windows replaced by 2024 candidates</tspan>
+    <tspan x="1025" dy="32">• Metadata-only audit; no replacement outcomes inspected</tspan>
+    <tspan x="1025" dy="32">• Hypotheses, models and statistical plan unchanged</tspan>
+  </text>
+  <path d="M810 275 L990 275" class="arrow"/>
+
+  <!-- row 2 -->
+  <rect x="990" y="475" width="720" height="210" class="box"/>
+  <text x="1025" y="520" class="h">3. Candidate-month screening</text>
+  <text x="1025" y="560" class="b">
+    <tspan x="1025" dy="0">• Four seasonal slots with deterministic candidate/fallback order</tspan>
+    <tspan x="1025" dy="32">• Availability checked before traffic values were analyzed</tspan>
+    <tspan x="1025" dy="32">• Eligibility required ≥64 locations</tspan>
+    <tspan x="1025" dy="32">• Each eligible node required ≥98% training-period coverage</tspan>
+  </text>
+  <path d="M1350 380 L1350 475" class="arrow"/>
+
+  <rect x="90" y="475" width="720" height="210" class="box"/>
+  <text x="125" y="520" class="h">4. Confirmatory months fixed</text>
+  <text x="125" y="560" class="b">
+    <tspan x="125" dy="0">• Analyzable months: May 2024 and November 2024</tspan>
+    <tspan x="125" dy="32">• February and August failed the frozen node-coverage rule</tspan>
+    <tspan x="125" dy="32">• Minimum requirement of two analyzable seasons satisfied</tspan>
+    <tspan x="125" dy="32">• No outcome-driven month substitution permitted</tspan>
+  </text>
+  <path d="M990 580 L810 580" class="arrow"/>
+
+  <!-- row 3 -->
+  <rect x="90" y="780" width="720" height="235" class="box"/>
+  <text x="125" y="825" class="h">5. Sampling and graph construction</text>
+  <text x="125" y="865" class="b">
+    <tspan x="125" dy="0">• 64 nodes/month: 16 citywide anchors + 3 local neighbors each</tspan>
+    <tspan x="125" dy="32">• Selection used training partition only</tspan>
+    <tspan x="125" dy="32">• Directed OSRM road-travel graph, 6 outgoing neighbors/node</tspan>
+    <tspan x="125" dy="32">• Learned adaptive adjacency added to static road graph</tspan>
+    <tspan x="125" dy="32">• Identity-static + adaptive graph used as ablation control</tspan>
+  </text>
+  <path d="M450 685 L450 780" class="arrow"/>
+
+  <rect x="990" y="780" width="720" height="235" class="box"/>
+  <text x="1025" y="825" class="h">6. Frozen model execution</text>
+  <text x="1025" y="865" class="b">
+    <tspan x="1025" dy="0">• Temporal MLP vs Dynamic Graph Transformer conditions</tspan>
+    <tspan x="1025" dy="32">• 24-hour history; +1h, +2h, +3h and +6h horizons</tspan>
+    <tspan x="1025" dy="32">• Chronological 70% / 15% / 15% train-validation-test split</tspan>
+    <tspan x="1025" dy="32">• Fixed seeds: 2026, 2027, 2028</tspan>
+    <tspan x="1025" dy="32">• Hyperparameters remained frozen</tspan>
+  </text>
+  <path d="M810 897 L990 897" class="arrow"/>
+
+  <!-- row 4 -->
+  <rect x="990" y="1110" width="720" height="170" class="box"/>
+  <text x="1025" y="1155" class="h">7. Registered statistical inference</text>
+  <text x="1025" y="1195" class="b">
+    <tspan x="1025" dy="0">• Calendar-day MAE as paired inferential unit</tspan>
+    <tspan x="1025" dy="31">• One-sided paired Wilcoxon + 10,000-replicate hierarchical bootstrap</tspan>
+    <tspan x="1025" dy="31">• Holm correction applied to the secondary hypothesis family</tspan>
+  </text>
+  <path d="M1350 1015 L1350 1110" class="arrow"/>
+
+  <rect x="90" y="1110" width="720" height="170" class="box"/>
+  <text x="125" y="1155" class="h">8. Transparent result and public archive</text>
+  <text x="125" y="1195" class="b">
+    <tspan x="125" dy="0">• H1 not statistically supported: p = 0.5000</tspan>
+    <tspan x="125" dy="31">• Secondary results reported with multiplicity adjustment</tspan>
+    <tspan x="125" dy="31">• OSF registration + GitHub evidence archive + Zenodo DOI</tspan>
+  </text>
+  <path d="M990 1195 L810 1195" class="arrow"/>
+
+  <text x="900" y="1325" text-anchor="middle" class="note">Workflow emphasizes separation of exploratory development, feasibility correction, confirmatory analysis, and result interpretation.</text>
+</svg>
